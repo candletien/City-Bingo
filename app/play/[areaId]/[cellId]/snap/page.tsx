@@ -3,6 +3,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { getArea, getCell } from "@/lib/content";
 import { verifyPosition, type VerifyResult } from "@/lib/rules";
+import { blobToDataUrl, type MatchResult } from "@/lib/match";
 import { actions, useGame } from "@/lib/store";
 import { downscale, photoKey, savePhoto } from "@/lib/photos";
 import { Button, Chip, Icon, IconButton, Loading, Sheet } from "@/components/ui";
@@ -10,7 +11,10 @@ import { Button, Chip, Icon, IconButton, Loading, Sheet } from "@/components/ui"
 type Phase =
   | { k: "ready" }
   | { k: "checking" }
-  | { k: "confirm" } // mission: photo + tap confirm
+  | { k: "scanning" } // AI is looking at the photo
+  | { k: "matched"; m: MatchResult }
+  | { k: "nomatch"; seen: string }
+  | { k: "confirm" } // mission without AI: photo + tap confirm
   | { k: "fail"; r: VerifyResult }
   | { k: "nofix"; denied: boolean };
 
@@ -61,8 +65,28 @@ export default function Snap() {
     router.replace(`/play/${areaId}/${cellId}/story?new=1`);
   };
 
+  /** AI photo check. Runs after the location passes, so a far-away photo never costs a call. */
+  const aiCheck = async (photo: Blob) => {
+    setPhase({ k: "scanning" });
+    const started = Date.now();
+    let m: MatchResult = { status: "off" };
+    try {
+      const res = await fetch("/api/match", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ areaId, cellId, image: await blobToDataUrl(photo) }),
+      });
+      if (res.ok) m = await res.json();
+    } catch { /* offline: location rule decides alone */ }
+    if (m.status === "off" && s.testMode) m = { status: "matched", confidence: 0.9, seen: `Test mode: pretending this shows "${cell.title}".` };
+    // Let the scan read as a scan, even when the answer is instant.
+    await new Promise((r) => setTimeout(r, Math.max(0, 1400 - (Date.now() - started))));
+    if (m.status === "nomatch") return setPhase({ k: "nomatch", seen: m.seen });
+    if (m.status === "off" && cell.type === "mission") return setPhase({ k: "confirm" });
+    setPhase({ k: "matched", m });
+  };
+
   const check = async (photo: Blob) => {
-    if (cell.type === "mission") return setPhase({ k: "confirm" });
+    if (cell.type === "mission") return aiCheck(photo);
     setPhase({ k: "checking" });
     let here: Pos;
     try {
@@ -88,7 +112,7 @@ export default function Snap() {
       // Offline on the street: same rule locally; re-checked on the server once sync exists.
       r = verifyPosition(area, cell, here);
     }
-    if (r.passed) return passed(photo);
+    if (r.passed) return aiCheck(photo);
     setPhase({ k: "fail", r });
   };
 
@@ -103,6 +127,7 @@ export default function Snap() {
 
   const shoot = () => { setPhase({ k: "ready" }); input.current?.click(); };
   const fail = phase.k === "fail" ? phase.r : null;
+  const match = phase.k === "matched" ? phase.m : null;
   const closeness = fail?.distanceM && fail.thresholdM ? Math.max(0.06, Math.min(0.94, fail.thresholdM / fail.distanceM)) : 0;
 
   return (
@@ -131,6 +156,20 @@ export default function Snap() {
             Checking where you are…
           </div>
         )}
+        {phase.k === "scanning" && (
+          <>
+            <div className="vf-scan" aria-hidden="true"><i /></div>
+            <div className="vf-checking" role="status">
+              <Icon name="sparkle" size={20} style={{ color: "var(--lime)" }} />
+              AI is looking at your photo…
+            </div>
+          </>
+        )}
+        {match && (
+          <div className="vf-matched rise" role="status">
+            <div className="match-stamp"><Icon name="check" size={26} style={{ strokeWidth: 3 }} />Matched</div>
+          </div>
+        )}
       </div>
 
       <div className="row" style={{ marginTop: 14, gap: 10 }}>
@@ -141,13 +180,30 @@ export default function Snap() {
       </div>
 
       <div className="bottom" style={{ alignItems: "center" }}>
-        {phase.k === "confirm" ? (
+        {match ? (
+          <div className="stack rise" style={{ width: "100%" }}>
+            <div className="card card-glass" style={{ padding: 16, flexDirection: "row", gap: 12, alignItems: "flex-start" }}>
+              <span className="ai-badge"><Icon name="sparkle" size={16} /></span>
+              <div className="stack" style={{ gap: 4 }}>
+                <p className="label" style={{ opacity: 0.8 }}>
+                  {match.status === "matched" ? `AI check · ${Math.round(match.confidence * 100)}% sure` : "Location confirmed"}
+                </p>
+                <p className="body">
+                  {match.status === "matched" ? match.seen : `You're in the right spot for “${cell.title}”.`}
+                </p>
+              </div>
+            </div>
+            <Button size="lg" onClick={() => blob && passed(blob)}>
+              {cell.guess ? <><Icon name="bulb" />Quick question first</> : <><Icon name="next" />Read the story</>}
+            </Button>
+          </div>
+        ) : phase.k === "confirm" ? (
           <div className="stack" style={{ width: "100%" }}>
             <Button size="lg" onClick={() => blob && passed(blob)}><Icon name="check" />Yes, I did it</Button>
             <Button variant="glass" size="lg" onClick={shoot}>Retake photo</Button>
           </div>
         ) : (
-          <button type="button" className="shutter" onClick={shoot} disabled={phase.k === "checking"} aria-label="Take a photo">
+          <button type="button" className="shutter" onClick={shoot} disabled={phase.k === "checking" || phase.k === "scanning"} aria-label="Take a photo">
             <span />
           </button>
         )}
@@ -174,6 +230,20 @@ export default function Snap() {
               </div>
             )}
             <Button size="lg" onClick={shoot}><Icon name="camera" />Take a photo</Button>
+            <Button variant="secondary" size="lg" href={`/play/${areaId}/${cellId}#hints`}><Icon name="bulb" />Get a hint</Button>
+          </div>
+        )}
+      </Sheet>
+
+      <Sheet open={phase.k === "nomatch"} onClose={() => setPhase({ k: "ready" })} label="Not a match yet">
+        {phase.k === "nomatch" && (
+          <div className="stack">
+            <h2 className="display-l">Not a match yet</h2>
+            <div className="card card-grey" style={{ padding: 14, flexDirection: "row", gap: 10 }}>
+              <Icon name="sparkle" /><p className="body-s">{phase.seen || "The AI couldn't spot it in this photo."}</p>
+            </div>
+            <p className="body muted">You're in the right area. Get closer, fill the frame with <b style={{ color: "var(--ink)" }}>{cell.title}</b>, and try again.</p>
+            <Button size="lg" onClick={shoot}><Icon name="camera" />Take another photo</Button>
             <Button variant="secondary" size="lg" href={`/play/${areaId}/${cellId}#hints`}><Icon name="bulb" />Get a hint</Button>
           </div>
         )}

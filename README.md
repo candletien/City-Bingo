@@ -28,6 +28,7 @@ Camera and geolocation need HTTPS on a phone (Vercel gives you that). To try the
 | 06 | Bingo board | `/play/[areaId]` |
 | 07 / 08 | Quest + hints / Report sheet | `/play/[areaId]/[cellId]` |
 | 09 / 10 | Camera / Photo didn't pass | `/play/[areaId]/[cellId]/snap` |
+| 09b / 09c / 10b | AI checking → **Matched** / Not a match yet | same route (sheet / overlay) |
 | 11 | Guess | `/play/[areaId]/[cellId]/guess` |
 | 12 | The story | `/play/[areaId]/[cellId]/story` |
 | 13 | Bingo! | `/play/[areaId]/bingo` |
@@ -38,6 +39,7 @@ Camera and geolocation need HTTPS on a phone (Vercel gives you that). To try the
 ## How it's built
 
 - `lib/rules.ts`: the exact rules (board builder with hard cells at 1/4/6, lines, one-more-for-bingo, haversine pass check: hard ≤ 50 m, normal inside the area radius, mission always).
+- `app/api/match`: AI photo check. After the location passes, the photo goes to Claude with the square's title and clue; it answers matched / not matched plus one line on what it saw. Set `ANTHROPIC_API_KEY` on the server to turn it on. Without a key (or offline) the location rule decides alone, and Test mode pretends the photo matched.
 - `app/api/verify`: runs the pass check on the server. If the phone is offline it falls back to the same rule locally.
 - `lib/store.ts`: player progress. Its shape mirrors the Supabase tables in PRD §7.2.
 - `lib/photos.ts`: photos, downscaled and kept in IndexedDB.

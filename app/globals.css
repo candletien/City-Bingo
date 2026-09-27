@@ -353,6 +353,20 @@ img { max-width: 100%; display: block; }
   position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; white-space: nowrap;
   background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 12px 18px; border-radius: 99px; font-weight: 700;
 }
+/* AI photo check: scan line, then a stamped MATCHED */
+.vf-scan { position: absolute; inset: 0; pointer-events: none; background: rgba(0,0,0,.18); }
+.vf-scan i { position: absolute; left: 0; right: 0; height: 90px; background: linear-gradient(180deg, transparent, rgba(216,245,28,.35) 85%, var(--lime) 86%, transparent 88%); animation: scan 1.3s ease-in-out infinite alternate; }
+@keyframes scan { from { top: -90px; } to { top: calc(100% - 20px); } }
+.vf-matched { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.28); }
+.match-stamp {
+  display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 18px;
+  background: var(--lime); color: var(--on-lime); font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1;
+  letter-spacing: -0.03em; text-transform: uppercase; border: 5px solid #fff; box-shadow: var(--shadow-float);
+  animation: stamp .55s cubic-bezier(.2,1.6,.4,1) both;
+}
+@keyframes stamp { from { transform: scale(2.2) rotate(8deg); opacity: 0; } to { transform: scale(1) rotate(-4deg); opacity: 1; } }
+.ai-badge { width: 32px; height: 32px; border-radius: 10px; background: var(--lime); color: var(--on-lime); display: grid; place-items: center; flex-shrink: 0; }
+@media (prefers-reduced-motion: reduce) { .vf-scan i, .match-stamp { animation: none; } }
 .snap-thumb { width: 40px; height: 40px; border-radius: 12px; background: var(--glass); display: grid; place-items: center; flex-shrink: 0; }
 .shutter { width: 84px; height: 84px; border-radius: 50%; border: 5px solid #fff; background: transparent; padding: 5px; cursor: pointer; }
 .shutter span { display: block; width: 100%; height: 100%; border-radius: 50%; background: var(--lime); transition: transform .12s; }
