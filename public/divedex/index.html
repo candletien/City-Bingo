@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#061c26">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Mitr:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Itim&display=swap">
 <style>
 :root{
   color-scheme: dark;
@@ -15,7 +15,7 @@
   --foam:#e7f3ef; --mist:#9cc1c2; --dim:#6d9699;
   --sand:#e8d3a6; --flag:#e0313f; --flag-ink:#fff;
   --r1:#e8d3a6; --r2:#63d6ab; --r3:#7fd4ff; --r4:#f2c14e;
-  --display:'Mitr','IBM Plex Sans Thai',system-ui,sans-serif;
+  --display:'Itim','IBM Plex Sans Thai',system-ui,sans-serif;
   --body:'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI',Tahoma,system-ui,sans-serif;
   --gauge:'Chakra Petch','IBM Plex Sans Thai',ui-monospace,monospace;
 }
@@ -27,7 +27,7 @@ body{color:var(--foam);font-family:var(--body);font-size:15px;line-height:1.55;p
 button,input,textarea,select{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:2px solid var(--r3);outline-offset:2px}
-h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.25;text-wrap:balance;margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.25;text-wrap:balance;margin:0}
 h1{font-size:24px} h2{font-size:18px} h3{font-size:16px}
 p{margin:0}
 .num{font-family:var(--gauge);font-variant-numeric:tabular-nums;letter-spacing:.02em}
@@ -37,7 +37,7 @@ p{margin:0}
 .brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .flag{width:30px;height:22px;border-radius:3px;background:var(--flag);position:relative;overflow:hidden;flex:none;box-shadow:0 0 0 1px #0004}
 .flag::after{content:"";position:absolute;left:-6px;top:8px;width:44px;height:5px;background:#fff;transform:rotate(36deg)}
-.brand b{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.01em}
+.brand b{font-family:var(--display);font-weight:400;font-size:21px;letter-spacing:.01em}
 .brand span{color:var(--mist);font-size:12.5px}
 .brand .sp{flex:1}
 .ghost{background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--mist)}
@@ -84,13 +84,18 @@ p{margin:0}
 .seg button{border:0;background:none;padding:5px 12px;border-radius:999px;font-size:13px;color:var(--mist)}
 .seg button[aria-pressed="true"]{background:var(--foam);color:var(--abyss)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:8px}
-.card{position:relative;background:linear-gradient(180deg,#123f50,#0b2c39);border:1px solid var(--line);border-radius:14px;padding:8px 8px 9px;text-align:left;display:grid;gap:2px}
+.card{position:relative;background:linear-gradient(180deg,#1f6680,#175169);border:1px solid #2b7690;border-radius:14px;padding:8px 8px 9px;text-align:left;display:grid;gap:2px}
 .card .no{font-family:var(--gauge);font-size:11px;color:var(--dim)}
 .card img{width:100%;aspect-ratio:3/2;height:auto}
-.card .nm{font-size:12.5px;line-height:1.3;min-height:2.6em}
-.card.unseen{background:#0a2530;border-style:dashed}
+.card .nm{font-family:var(--display);font-size:14px;line-height:1.3;min-height:2.6em}
+.card.unseen{background:#0e3444;border-color:var(--line);border-style:dashed}
 .card.unseen .nm{color:var(--dim)}
-.card .dot{position:absolute;right:8px;top:9px;width:8px;height:8px;border-radius:50%}
+.card .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-left:5px;vertical-align:1px}
+.iucn{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;font:600 9.5px/1 var(--gauge);color:#fff;flex:none}
+.card .iucn{position:absolute;right:6px;top:6px}
+.iucn.VU{background:#e98b2a}.iucn.EN{background:#e0582a}.iucn.CR{background:#d42a3a}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--mist);align-items:center}
+.legend span{display:inline-flex;gap:6px;align-items:center}
 .r1{--rc:var(--r1)} .r2{--rc:var(--r2)} .r3{--rc:var(--r3)} .r4{--rc:var(--r4)}
 .card .dot{background:var(--rc)}
 .card.r4:not(.unseen){border-color:#f2c14e88;box-shadow:inset 0 0 18px #f2c14e22}
@@ -159,7 +164,7 @@ p{margin:0}
 .err{color:#ff9d9d;font-size:13px}
 
 /* species detail */
-.hero{position:relative;border-radius:16px;background:radial-gradient(90% 90% at 50% 40%,#1b6a80,#0a3140);aspect-ratio:3/2;display:grid;place-items:center;overflow:hidden}
+.hero{position:relative;border-radius:16px;background:radial-gradient(90% 90% at 50% 40%,#2a7893,#185570);aspect-ratio:3/2;display:grid;place-items:center;overflow:hidden}
 .hero img{width:86%;height:auto}
 .hero img.photo{width:100%;height:100%;object-fit:cover}
 .hero .tog{position:absolute;right:8px;bottom:8px;background:#04161dcc;border:1px solid #ffffff2a;border-radius:99px;font-size:12px;padding:4px 10px}
@@ -252,6 +257,7 @@ textarea.backup{width:100%;min-height:140px;background:#082531;border:1px solid 
         <button type="button" data-f="unseen" aria-pressed="false">ยังไม่เจอ</button>
       </div>
       <div class="grid" id="dexGrid"></div>
+      <div class="legend"><b style="font-weight:500">สถานะ IUCN</b><span><i class="iucn VU">VU</i>มีแนวโน้มใกล้สูญพันธุ์</span><span><i class="iucn EN">EN</i>ใกล้สูญพันธุ์</span><span><i class="iucn CR">CR</i>ใกล้สูญพันธุ์อย่างยิ่ง</span></div>
     </section>
 
     <section class="view" id="v-logs" data-view="logs" hidden>
@@ -287,6 +293,7 @@ const SIL = '#0e3b4a';
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LV = [1, 3, 6, 10, 15];
 const RARITY = ['', 'พบบ่อย', 'ไม่บ่อย', 'หายาก', 'ตำนาน'];
+const IUCN = {VU: 'มีแนวโน้มใกล้สูญพันธุ์', EN: 'ใกล้สูญพันธุ์', CR: 'ใกล้สูญพันธุ์อย่างยิ่ง'};
 
 /* ---------- species ---------- */
 // t: art template · z: tank zone · s: base size · r: rarity · c: [body, accent, fin, outline]
@@ -304,23 +311,23 @@ const SPECIES = [
  {id:'grouper',th:'ปลาเก๋า',en:'Grouper',t:'fish',z:'swim',s:72,r:1,c:['#b0673c','#f1e0c6','#9a5530','#3f1f10'],p:{h:22,tail:'round',pat:'spots'},hab:'ถ้ำ ซอกหิน และซากเรือ',fact:'บางครั้งล่าเหยื่อร่วมกับปลาไหลมอเรย์ โดยส่ายหัวเป็นสัญญาณชวนออกล่า'},
  {id:'barracuda',th:'ปลาสาก',en:'Chevron barracuda',t:'fish',z:'swim',s:88,r:2,c:['#b9c7cc','#6a7d86','#9fb0b8','#34444c'],p:{h:9,rx:46,pat:'chevron'},hab:'กลางน้ำรอบกองหินใต้น้ำ',fact:'รวมฝูงเป็นร้อยตัวแล้วว่ายวนเป็นเกลียว เป็นภาพที่นักดำน้ำชอบถ่ายมาก'},
  {id:'trevally',th:'ปลาหางแข็งครีบน้ำเงิน',en:'Bluefin trevally',t:'fish',z:'swim',s:70,r:1,c:['#c9d6dc','#2c6fa8','#3f8fd6','#2a3d48'],p:{h:20,pat:'belly'},hab:'กลางน้ำ ขอบแนวปะการัง',fact:'ล่าเป็นทีมด้วยความเร็วสูง บางครั้งว่ายตามนักดำน้ำเพื่อใช้เป็นที่กำบังเข้าหาเหยื่อ'},
- {id:'napoleon',th:'ปลานกขุนทองหัวโหนก',en:'Humphead wrasse',t:'fish',z:'big',s:112,r:3,c:['#2f9a8a','#7fd8d0','#2a7f96','#0e3c38'],p:{h:24,hump:1,pat:'scribble'},hab:'แนวปะการังนอกฝั่ง',fact:'ยาวได้เกือบ 2 เมตร อายุยืนกว่า 30 ปี และเป็นหนึ่งในไม่กี่อย่างที่กินดาวมงกุฎหนามซึ่งทำลายปะการัง'},
+ {id:'napoleon',th:'ปลานกขุนทองหัวโหนก',en:'Humphead wrasse',t:'fish',z:'big',s:112,r:3,iucn:'EN',c:['#2f9a8a','#7fd8d0','#2a7f96','#0e3c38'],p:{h:24,hump:1,pat:'scribble'},hab:'แนวปะการังนอกฝั่ง',fact:'ยาวได้เกือบ 2 เมตร อายุยืนกว่า 30 ปี และเป็นหนึ่งในไม่กี่อย่างที่กินดาวมงกุฎหนามซึ่งทำลายปะการัง'},
  {id:'batfish',th:'ปลาค้างคาว',en:'Batfish',t:'fish',z:'swim',s:60,r:1,c:['#cfd3d0','#3a3f3d','#3a3f3d','#2e3432'],p:{h:28,rx:32,dors:'tall',pat:'bars',bars:[58,84],bw:6},hab:'กลางน้ำใกล้กองหินและซากเรือ',fact:'ชอบว่ายเข้ามาดูนักดำน้ำใกล้ ๆ ตอนเด็กมันเลียนแบบใบไม้แห้งที่ลอยน้ำ'},
  {id:'moray',th:'ปลาไหลมอเรย์ยักษ์',en:'Giant moray',t:'eel',z:'bottom',s:88,r:1,c:['#8a8a3a','#3d3a14','#8a8a3a','#2d2a0c'],p:{pat:'spots'},hab:'ซอกหินและรูในแนวปะการัง',fact:'อ้าปากหุบปากตลอดเวลาเพราะต้องสูบน้ำผ่านเหงือก ไม่ได้กำลังขู่ใคร'},
  {id:'garden',th:'ปลาไหลสวน',en:'Garden eel',t:'eel',z:'burrow',s:40,r:2,c:['#e8e0cf','#3a3a3a','#e8e0cf','#5a5245'],p:{vert:1,pat:'spots'},hab:'พื้นทรายลาดชัน',fact:'อยู่เป็นอาณานิคมในทราย โผล่ครึ่งตัวขึ้นมากินแพลงก์ตอน และมุดลงรูทันทีเมื่อมีอะไรเข้าใกล้'},
  {id:'krait',th:'งูสมิงทะเลปากเหลือง',en:'Banded sea krait',t:'eel',z:'swim',s:80,r:2,c:['#9ec3e0','#151a22','#9ec3e0','#151a22'],p:{pat:'bands',lip:'#f3d34a'},hab:'แนวปะการังและกองหิน',fact:'พิษแรงมากแต่นิสัยไม่ดุ ต้องขึ้นบกเพื่อวางไข่และย่อยอาหาร'},
  {id:'bluespot',th:'ปลากระเบนทองจุดฟ้า',en:'Blue-spotted ribbontail ray',t:'ray',z:'bottom',s:58,r:1,c:['#c9a45a','#2f8cff','#b38d48','#5a4020'],p:{ribbon:1},hab:'พื้นทรายใต้โต๊ะปะการัง',fact:'มีเงี่ยงพิษที่หาง มักซ่อนตัวใต้โต๊ะปะการัง เห็นแล้วให้ชมห่าง ๆ'},
- {id:'eagle',th:'ปลากระเบนนกจุดขาว',en:'Spotted eagle ray',t:'ray',z:'big',s:112,r:3,c:['#2b3440','#ffffff','#2b3440','#11161c'],p:{eagle:1},hab:'กลางน้ำและพื้นทรายกว้าง',fact:'ใช้จะงอยปากคล้ายพลั่วขุดทรายหาหอยและปู และบางครั้งกระโดดพ้นผิวน้ำ'},
- {id:'manta',th:'ปลากระเบนราหู',en:'Manta ray',t:'ray',z:'big',s:150,r:3,c:['#1f2a33','#e8eef0','#1f2a33','#0d1318'],p:{manta:1},hab:'กองหินกลางทะเลที่มีแพลงก์ตอน',fact:'ไม่มีเงี่ยงพิษ กินแต่แพลงก์ตอน ลายจุดใต้ท้องแต่ละตัวไม่ซ้ำกัน ใช้แยกตัวได้เหมือนลายนิ้วมือ'},
- {id:'blacktip',th:'ฉลามครีบดำ',en:'Blacktip reef shark',t:'shark',z:'swim',s:98,r:2,c:['#9aa6ab','#141414','#9aa6ab','#3a4549'],p:{tips:1},hab:'แนวปะการังน้ำตื้น',fact:'ขี้อายและมักว่ายหนีนักดำน้ำ ลูกฉลามชอบว่ายเล่นในน้ำตื้นริมหาด'},
- {id:'leopard',th:'ฉลามเสือดาว',en:'Zebra shark',t:'shark',z:'bottom',s:122,r:3,c:['#d9c49a','#3b2f22','#cbb488','#4a3c2a'],p:{spots:1,long:1},hab:'พื้นทรายใกล้แนวปะการัง',fact:'ตอนเด็กมีลายทางเหมือนม้าลาย พอโตกลายเป็นจุดแบบเสือดาว กลางวันชอบนอนนิ่งบนพื้นทราย'},
- {id:'whaleshark',th:'ฉลามวาฬ',en:'Whale shark',t:'shark',z:'big',s:190,r:4,c:['#34505e','#e8f0f2','#2c4552','#1a2a33'],p:{spots:1,whale:1},hab:'กลางน้ำรอบกองหินกลางทะเล',fact:'ปลาที่ใหญ่ที่สุดในโลก ยาวได้เกิน 12 เมตร แต่กินแค่แพลงก์ตอนและปลาเล็ก ลายจุดของแต่ละตัวใช้ระบุตัวได้'},
- {id:'hawksbill',th:'เต่ากระ',en:'Hawksbill turtle',t:'turtle',z:'swim',s:82,r:2,c:['#8a5a2b','#e8b86a','#7b5a36','#3a2412'],hab:'แนวปะการัง',fact:'ปากงุ้มแหลมเหมือนเหยี่ยว ชอบกินฟองน้ำซึ่งสัตว์อื่นแทบไม่กิน'},
- {id:'green',th:'เต่าตนุ',en:'Green turtle',t:'turtle',z:'swim',s:90,r:2,c:['#5f6b3a','#a8b27a','#6f7a4a','#2a3018'],hab:'แหล่งหญ้าทะเลและแนวปะการัง',fact:'ชื่อ Green turtle มาจากไขมันใต้กระดองที่เป็นสีเขียว เพราะกินหญ้าทะเลและสาหร่าย'},
+ {id:'eagle',th:'ปลากระเบนนกจุดขาว',en:'Spotted eagle ray',t:'ray',z:'big',s:112,r:3,iucn:'VU',c:['#2b3440','#ffffff','#2b3440','#11161c'],p:{eagle:1},hab:'กลางน้ำและพื้นทรายกว้าง',fact:'ใช้จะงอยปากคล้ายพลั่วขุดทรายหาหอยและปู และบางครั้งกระโดดพ้นผิวน้ำ'},
+ {id:'manta',th:'ปลากระเบนราหู',en:'Reef manta ray',t:'ray',z:'big',s:150,r:3,iucn:'VU',c:['#1f2a33','#e8eef0','#1f2a33','#0d1318'],p:{manta:1},hab:'กองหินกลางทะเลที่มีแพลงก์ตอน',fact:'ไม่มีเงี่ยงพิษ กินแต่แพลงก์ตอน ลายจุดใต้ท้องแต่ละตัวไม่ซ้ำกัน ใช้แยกตัวได้เหมือนลายนิ้วมือ'},
+ {id:'blacktip',th:'ฉลามครีบดำ',en:'Blacktip reef shark',t:'shark',z:'swim',s:98,r:2,iucn:'VU',c:['#9aa6ab','#141414','#9aa6ab','#3a4549'],p:{tips:1},hab:'แนวปะการังน้ำตื้น',fact:'ขี้อายและมักว่ายหนีนักดำน้ำ ลูกฉลามชอบว่ายเล่นในน้ำตื้นริมหาด'},
+ {id:'leopard',th:'ฉลามเสือดาว',en:'Zebra shark',t:'shark',z:'bottom',s:122,r:3,iucn:'EN',c:['#d9c49a','#3b2f22','#cbb488','#4a3c2a'],p:{spots:1,long:1},hab:'พื้นทรายใกล้แนวปะการัง',fact:'ตอนเด็กมีลายทางเหมือนม้าลาย พอโตกลายเป็นจุดแบบเสือดาว กลางวันชอบนอนนิ่งบนพื้นทราย'},
+ {id:'whaleshark',th:'ฉลามวาฬ',en:'Whale shark',t:'shark',z:'big',s:190,r:4,iucn:'EN',c:['#34505e','#e8f0f2','#2c4552','#1a2a33'],p:{spots:1,whale:1},hab:'กลางน้ำรอบกองหินกลางทะเล',fact:'ปลาที่ใหญ่ที่สุดในโลก ยาวได้เกิน 12 เมตร แต่กินแค่แพลงก์ตอนและปลาเล็ก ลายจุดของแต่ละตัวใช้ระบุตัวได้'},
+ {id:'hawksbill',th:'เต่ากระ',en:'Hawksbill turtle',t:'turtle',z:'swim',s:82,r:2,iucn:'CR',c:['#3d3b25','#a07a34','#2f3324','#151a10'],p:{hook:1,tortoise:1},hab:'แนวปะการัง',fact:'ปากงุ้มแหลมเหมือนเหยี่ยว ชอบกินฟองน้ำซึ่งสัตว์อื่นแทบไม่กิน'},
+ {id:'green',th:'เต่าตนุ',en:'Green turtle',t:'turtle',z:'swim',s:90,r:2,iucn:'EN',c:['#5b4a2c','#8a7440','#46502c','#221a0e'],hab:'แหล่งหญ้าทะเลและแนวปะการัง',fact:'ชื่อ Green turtle มาจากไขมันใต้กระดองที่เป็นสีเขียว เพราะกินหญ้าทะเลและสาหร่าย'},
  {id:'octopus',th:'หมึกสาย',en:'Day octopus',t:'octopus',z:'bottom',s:62,r:2,c:['#c8603a','#f0a080','#b04e2c','#5a2412'],hab:'ซอกหินและพื้นเศษปะการัง',fact:'มีหัวใจ 3 ดวง เลือดสีฟ้า และเปลี่ยนทั้งสีและผิวให้เหมือนหินได้ในพริบตา'},
  {id:'cuttle',th:'หมึกกระดอง',en:'Broadclub cuttlefish',t:'cuttle',z:'hover',s:64,r:2,c:['#b89a78','#f2e6d8','#8e7458','#3e2f20'],hab:'แนวปะการังและพื้นทราย',fact:'เปลี่ยนสีเป็นคลื่นแสงวิ่งไปมาบนตัวเพื่อสะกดเหยื่อ และมีกระดองภายในช่วยลอยตัว'},
  {id:'squid',th:'หมึกหอม',en:'Bigfin reef squid',t:'squid',z:'swim',s:60,r:2,c:['#e8d6c8','#c08a70','#f3e8de','#6a4a3a'],hab:'กลางน้ำใกล้แนวปะการัง พบบ่อยตอนกลางคืน',fact:'ว่ายถอยหลังได้ด้วยการพ่นน้ำ และคุยกันด้วยการเปลี่ยนสีผิว'},
- {id:'seahorse',th:'ม้าน้ำ',en:'Seahorse',t:'seahorse',z:'hover',s:40,r:3,c:['#f2b705','#b36a00','#ffd85a','#6a3c00'],hab:'เกาะอยู่กับกัลปังหาหรือหญ้าทะเล',fact:'ตัวผู้เป็นฝ่ายตั้งท้อง ตัวเมียวางไข่ในถุงหน้าท้องของตัวผู้'},
+ {id:'seahorse',th:'ม้าน้ำ',en:'Spotted seahorse',t:'seahorse',z:'hover',s:40,r:3,iucn:'VU',c:['#f2b705','#b36a00','#ffd85a','#6a3c00'],hab:'เกาะอยู่กับกัลปังหาหรือหญ้าทะเล',fact:'ตัวผู้เป็นฝ่ายตั้งท้อง ตัวเมียวางไข่ในถุงหน้าท้องของตัวผู้'},
  {id:'ghostpipe',th:'ปลาจิ้มฟันจระเข้ผี',en:'Ornate ghost pipefish',t:'pipe',z:'hover',s:48,r:3,c:['#1c1c1c','#e84a5f','#f4f4f4','#0c0c0c'],hab:'ข้างกัลปังหาและขนนกทะเล',fact:'ตัวเมียใช้ครีบท้องห่อเป็นถุงเก็บไข่ และชอบลอยตัวหัวทิ่มลงข้างกัลปังหา'},
  {id:'nudi',th:'ทากเปลือย',en:'Nudibranch',t:'nudi',z:'bottom',s:34,r:1,c:['#3a1f8a','#ffcf33','#f28c28','#1a0f45'],hab:'บนหิน ฟองน้ำ และพื้นปะการัง',fact:'สีสดใสคือป้ายเตือนว่ามีพิษ บางชนิดขโมยเข็มพิษจากเหยื่อมาเก็บไว้ใช้เอง'},
  {id:'mantis',th:'กั้งตั๊กแตนหางนกยูง',en:'Peacock mantis shrimp',t:'shrimp',z:'bottom',s:44,r:2,c:['#2fa35a','#e8433a','#1f7fd0','#0f3a22'],p:{mantis:1},hab:'รูในพื้นเศษปะการัง',fact:'ต่อยเร็วพอจะทุบกระดองหอยและกระจกตู้ปลาแตก และมองเห็นสีได้หลากหลายกว่าคนมาก'},
@@ -329,261 +336,303 @@ const SPECIES = [
  {id:'jelly',th:'แมงกะพรุน',en:'Moon jellyfish',t:'jelly',z:'drift',s:48,r:1,c:['#c9a2ff','#f6e0ff','#e8c8ff','#8a64c8'],hab:'ลอยตามกระแสน้ำ',fact:'ไม่มีสมอง ไม่มีหัวใจ และตัวเป็นน้ำประมาณ 95 เปอร์เซ็นต์'},
  {id:'frog',th:'ปลากบ',en:'Frogfish',t:'blob',z:'bottom',s:46,r:3,c:['#f2c21b','#d98e04','#e0a90e','#6a4a00'],p:{lure:1},hab:'ติดอยู่กับฟองน้ำและหิน',fact:'ใช้ก้านครีบหลังเป็นเบ็ดล่อเหยื่อ แล้วฮุบได้เร็วกว่ากะพริบตา'},
  {id:'stone',th:'ปลาหิน',en:'Stonefish',t:'blob',z:'bottom',s:56,r:2,c:['#7a6a58','#a89478','#6a5a48','#2e261e'],hab:'พื้นเศษปะการัง พรางตัวเป็นหิน',fact:'พิษที่ก้านครีบหลังรุนแรงที่สุดชนิดหนึ่งในบรรดาปลา ระวังเวลาวางมือหรือคุกเข่า'},
- {id:'dugong',th:'พะยูน',en:'Dugong',t:'mammal',z:'big',s:150,r:4,c:['#9a8a80','#c8bab0','#8a7a70','#4a3e38'],p:{dugong:1},hab:'แหล่งหญ้าทะเล ในไทยพบมากที่ทะเลตรัง',fact:'กินหญ้าทะเลวันละหลายสิบกิโลกรัม และเป็นญาติใกล้ชิดของช้าง'},
+ {id:'dugong',th:'พะยูน',en:'Dugong',t:'mammal',z:'big',s:150,r:4,iucn:'VU',c:['#9a8a80','#c8bab0','#8a7a70','#4a3e38'],p:{dugong:1},hab:'แหล่งหญ้าทะเล ในไทยพบมากที่ทะเลตรัง',fact:'กินหญ้าทะเลวันละหลายสิบกิโลกรัม และเป็นญาติใกล้ชิดของช้าง'},
  {id:'dolphin',th:'โลมาปากขวด',en:'Bottlenose dolphin',t:'mammal',z:'big',s:130,r:3,c:['#7f98a8','#d8e2e8','#6f8898','#34485a'],hab:'ทะเลเปิดและชายฝั่ง',fact:'นอนหลับทีละครึ่งสมอง อีกครึ่งตื่นอยู่เพื่อขึ้นหายใจและคอยระวังภัย'},
 ];
 SPECIES.forEach((s, i) => { s.no = i + 1; s.p = s.p || {}; });
 const BY = Object.fromEntries(SPECIES.map(s => [s.id, s]));
 
 /* ---------- art ---------- */
-const st = (C, w = 1.6) => `stroke="${C.l}" stroke-width="${w}" stroke-linejoin="round"`;
-function eye(C, x, y, r) {
-  return `<circle cx="${x}" cy="${y}" r="${r}" fill="${C.e}" stroke="${C.l}" stroke-width="1.1"/><circle cx="${x + r * .22}" cy="${y}" r="${r * .56}" fill="${C.p}"/><circle cx="${x + r * .45}" cy="${y - r * .3}" r="${r * .2}" fill="${C.e}"/>`;
+// Flat, outline-free style: shapes read by colour alone, with thin cream lines for
+// scutes, scales and fin rays, darker backs, pale bellies and mottled skin.
+const LN = '#f3e7c4';
+function mix(a, b, t) {
+  const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const A = p(a), B = p(b);
+  return '#' + A.map((v, i) => Math.round(v + (B[i] - v) * t).toString(16).padStart(2, '0')).join('');
 }
-function dots(C, n, x0, x1, y0, y1, r, seed = 7) {
-  let s = '';
-  for (let i = 0; i < n; i++) {
-    const x = x0 + ((i * 37 + seed * 11) % 97) / 97 * (x1 - x0);
-    const y = y0 + ((i * 53 + seed * 29) % 89) / 89 * (y1 - y0);
-    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(r * (0.7 + ((i * 13) % 7) / 10)).toFixed(1)}" fill="${C.a}"/>`;
-  }
+const ln = (C, w = 1.1, o = .9) => `stroke="${C.ln}" stroke-width="${w}" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="${o}"`;
+function rnd(seed) { let s = seed; return () => ((s = (s * 9301 + 49297) % 233280) / 233280); }
+function eye(C, x, y, r) {
+  return `<ellipse cx="${x}" cy="${y}" rx="${(r * 1.6).toFixed(1)}" ry="${(r * 1.4).toFixed(1)}" fill="${C.dk}" opacity=".5"/><circle cx="${x}" cy="${y}" r="${r}" fill="${C.e}"/><circle cx="${(x + r * .2).toFixed(1)}" cy="${y}" r="${(r * .64).toFixed(1)}" fill="${C.p}"/><circle cx="${(x + r * .42).toFixed(1)}" cy="${(y - r * .3).toFixed(1)}" r="${(r * .22).toFixed(1)}" fill="${C.e}"/>`;
+}
+function dots(col, n, x0, x1, y0, y1, r, seed = 7, op = 1) {
+  const R = rnd(seed * 17 + n); let s = '';
+  for (let i = 0; i < n; i++) s += `<circle cx="${(x0 + R() * (x1 - x0)).toFixed(1)}" cy="${(y0 + R() * (y1 - y0)).toFixed(1)}" r="${(r * (.65 + R() * .7)).toFixed(1)}" fill="${col}" opacity="${op}"/>`;
   return s;
 }
+function blotch(col, n, x0, x1, y0, y1, r, seed = 5, op = .25) {
+  const R = rnd(seed * 31 + n); let s = '';
+  for (let i = 0; i < n; i++) { const x = x0 + R() * (x1 - x0), y = y0 + R() * (y1 - y0); s += `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${(r * (.6 + R() * .9)).toFixed(1)}" ry="${(r * (.35 + R() * .4)).toFixed(1)}" transform="rotate(${(R() * 180).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})" fill="${col}" opacity="${op}"/>`; }
+  return s;
+}
+// a fin: filled shape plus cream rays fanning from the base
+function fin(C, d, rays, col) { return `<path d="${d}" fill="${col || C.f}"/>` + (rays.length ? `<path d="${rays.map(r => `M${r[0]} ${r[1]} L${r[2]} ${r[3]}`).join(' ')}" ${ln(C, .8, .6)}/>` : ''); }
+let clipN = 0;
+function clipped(body, inner, fill) { const id = 'k' + (++clipN); return `<defs><clipPath id="${id}"><path d="${body}"/></clipPath></defs><path d="${body}" fill="${fill}"/><g clip-path="url(#${id})">${inner}</g>`; }
+const bubbles = C => `<g ${ln(C, 1, .75)}><circle cx="110" cy="11" r="3.2"/><circle cx="115.5" cy="4.5" r="2.1"/><circle cx="105" cy="4" r="1.4"/></g>`;
+
 const T = {
   fish(C, p) {
     const h = p.h || 18, rx = p.rx || 38, cx = 60, cy = 40, x0 = cx - rx, x1 = cx + rx;
     const body = `M${x0} ${cy} C${x0 + rx * .3} ${cy - h * 1.12} ${x1 - rx * .35} ${cy - h * 1.15} ${x1} ${cy - 1} C${x1 - rx * .35} ${cy + h * 1.12} ${x0 + rx * .3} ${cy + h * 1.08} ${x0} ${cy}Z`;
     let s = '', tx = x0 + 5;
-    s += p.tail === 'round'
-      ? `<path d="M${tx} ${cy} Q${tx - 16} ${cy - h * .95} ${tx - 19} ${cy} Q${tx - 16} ${cy + h * .95} ${tx} ${cy}Z" fill="${C.f}" ${st(C)}/>`
-      : `<path d="M${tx} ${cy} L${tx - 19} ${cy - h * .9} Q${tx - 10} ${cy} ${tx - 19} ${cy + h * .9}Z" fill="${C.f}" ${st(C)}/>`;
+    const tr = [-2, -1, 0, 1, 2].map(i => [tx, cy, tx - 16, cy + i * h * .34]);
+    s += fin(C, p.tail === 'round'
+      ? `M${tx} ${cy} Q${tx - 16} ${cy - h * .95} ${tx - 19} ${cy} Q${tx - 16} ${cy + h * .95} ${tx} ${cy}Z`
+      : `M${tx} ${cy} L${tx - 19} ${cy - h * .9} Q${tx - 10} ${cy} ${tx - 19} ${cy + h * .9}Z`, tr);
+    const fanRays = (bx0, bx1, by, tipY, n, lean = -5) => Array.from({length: n}, (_, i) => { const x = bx0 + (bx1 - bx0) * (i + .5) / n; return [x, by, x + lean, tipY]; });
     if (p.dors === 'filament') {
-      s += `<path d="M${cx - 10} ${cy - h * .8} Q${cx - 2} ${cy - h - 28} ${cx - 44} ${cy - h - 22} Q${cx - 8} ${cy - h - 10} ${cx + 16} ${cy - h * .85}Z" fill="${C.b}" ${st(C)}/>`;
-      s += `<path d="M${cx - 16} ${cy + h * .8} Q${cx - 10} ${cy + h + 10} ${cx + 6} ${cy + h * .85}Z" fill="${C.f}" ${st(C)}/>`;
+      s += fin(C, `M${cx - 10} ${cy - h * .8} Q${cx - 2} ${cy - h - 28} ${cx - 44} ${cy - h - 22} Q${cx - 8} ${cy - h - 10} ${cx + 16} ${cy - h * .85}Z`, [[cx - 4, cy - h * .8, cx - 36, cy - h - 20]], C.b);
+      s += fin(C, `M${cx - 16} ${cy + h * .8} Q${cx - 10} ${cy + h + 10} ${cx + 6} ${cy + h * .85}Z`, fanRays(cx - 14, cx + 4, cy + h * .82, cy + h + 5, 3));
     } else if (p.dors === 'tall') {
-      s += `<path d="M${cx - rx * .75} ${cy - h * .5} Q${cx - rx * .5} ${cy - h - 26} ${cx + rx * .25} ${cy - h * .85}Z" fill="${C.f}" ${st(C)}/>`;
-      s += `<path d="M${cx - rx * .75} ${cy + h * .5} Q${cx - rx * .5} ${cy + h + 26} ${cx + rx * .25} ${cy + h * .85}Z" fill="${C.f}" ${st(C)}/>`;
+      s += fin(C, `M${cx - rx * .75} ${cy - h * .5} Q${cx - rx * .5} ${cy - h - 26} ${cx + rx * .25} ${cy - h * .85}Z`, fanRays(cx - rx * .6, cx + rx * .15, cy - h * .7, cy - h - 16, 5, -8));
+      s += fin(C, `M${cx - rx * .75} ${cy + h * .5} Q${cx - rx * .5} ${cy + h + 26} ${cx + rx * .25} ${cy + h * .85}Z`, fanRays(cx - rx * .6, cx + rx * .15, cy + h * .7, cy + h + 16, 5, -8));
     } else if (p.dors === 'spines') {
-      for (let i = 0; i < 8; i++) { const x = cx - rx * .6 + i * 8; s += `<path d="M${x} ${cy - h * .7} L${x - 9} ${cy - h - 20 + Math.abs(i - 3) * 2}" stroke="${C.a}" stroke-width="2" stroke-linecap="round"/>`; }
-      s += `<path d="M${cx - rx * .6} ${cy - h * .7} Q${cx - 10} ${cy - h - 14} ${cx + 18} ${cy - h * .8}Z" fill="${C.f}" opacity=".7"/>`;
-      for (let i = 0; i < 7; i++) s += `<path d="M${cx + 8} ${cy + 4} L${cx - 26 + i * 3} ${cy + h + 12 + i * 2}" stroke="${C.a}" stroke-width="1.6" stroke-linecap="round"/>`;
-      s += `<path d="M${cx + 8} ${cy + 4} L${cx - 30} ${cy + h + 10} Q${cx - 12} ${cy + h + 28} ${cx - 6} ${cy + h + 24}Z" fill="${C.f}" opacity=".55"/>`;
+      s += `<path d="M${cx - rx * .6} ${cy - h * .7} Q${cx - 10} ${cy - h - 14} ${cx + 18} ${cy - h * .8}Z" fill="${C.f}" opacity=".75"/>`;
+      for (let i = 0; i < 8; i++) { const x = cx - rx * .6 + i * 8; s += `<path d="M${x} ${cy - h * .7} L${x - 9} ${cy - h - 20 + Math.abs(i - 3) * 2}" stroke="${C.a}" stroke-width="2.2" stroke-linecap="round"/><circle cx="${x - 9}" cy="${cy - h - 20 + Math.abs(i - 3) * 2}" r=".9" fill="${C.ln}"/>`; }
+      s += `<path d="M${cx + 8} ${cy + 4} L${cx - 30} ${cy + h + 10} Q${cx - 12} ${cy + h + 28} ${cx - 6} ${cy + h + 24}Z" fill="${C.f}" opacity=".7"/>`;
+      for (let i = 0; i < 7; i++) s += `<path d="M${cx + 8} ${cy + 4} L${cx - 26 + i * 3} ${cy + h + 12 + i * 2}" stroke="${C.a}" stroke-width="1.7" stroke-linecap="round"/>`;
     } else {
-      s += `<path d="M${cx - rx * .55} ${cy - h * .8} Q${cx} ${cy - h - 12} ${cx + rx * .4} ${cy - h * .85}Z" fill="${C.f}" ${st(C)}/>`;
-      s += `<path d="M${cx - rx * .5} ${cy + h * .8} Q${cx - rx * .1} ${cy + h + 10} ${cx + rx * .2} ${cy + h * .85}Z" fill="${C.f}" ${st(C)}/>`;
+      s += fin(C, `M${cx - rx * .55} ${cy - h * .8} Q${cx} ${cy - h - 12} ${cx + rx * .4} ${cy - h * .85}Z`, fanRays(cx - rx * .45, cx + rx * .3, cy - h * .82, cy - h - 6, 5));
+      s += fin(C, `M${cx - rx * .5} ${cy + h * .8} Q${cx - rx * .1} ${cy + h + 10} ${cx + rx * .2} ${cy + h * .85}Z`, fanRays(cx - rx * .42, cx + rx * .12, cy + h * .82, cy + h + 5, 4));
     }
-    if (p.hump) s += `<circle cx="${x1 - rx * .32}" cy="${cy - h * .72}" r="${h * .5}" fill="${C.b}" ${st(C)}/>`;
-    s += `<defs><clipPath id="k"><path d="${body}"/></clipPath></defs><path d="${body}" fill="${C.b}"/><g clip-path="url(#k)">`;
+    if (p.hump) s += `<circle cx="${x1 - rx * .32}" cy="${cy - h * .72}" r="${h * .5}" fill="${C.b}"/>`;
+    let inner = `<path d="M${x0} ${cy + 3} Q${cx} ${cy + h * .3} ${x1} ${cy + 3} L${x1} 80 L${x0} 80Z" fill="${C.lt}" opacity=".85"/>`;
+    inner += blotch(C.dk, 9, x0 + 6, x1 - 10, cy - h, cy, h * .3, h, .2);
     const pat = p.pat;
-    if (pat === 'bars') p.bars.forEach(x => s += `<rect x="${x - p.bw / 2}" y="0" width="${p.bw}" height="80" fill="${C.a}" ${p.edge ? `stroke="${C.l}" stroke-width="1.6"` : ''}/>`);
-    if (pat === 'eyebar') s += `<rect x="${x1 - rx * .3 - 4}" y="0" width="8" height="80" fill="${C.a}"/><circle cx="${x0 + rx * .55}" cy="${cy + 4}" r="5" fill="${C.a}" opacity=".85"/>`;
-    if (pat === 'spots') s += dots(C, 26, x0 + 6, x1 - 4, cy - h, cy + h, 1.8);
-    if (pat === 'belly') s += `<ellipse cx="${cx}" cy="${cy + h * .95}" rx="${rx}" ry="${h * .55}" fill="#fff" opacity=".35"/><path d="M${x0} ${cy - h * .45} Q${cx} ${cy - h * .7} ${x1} ${cy - 4}" stroke="${C.a}" stroke-width="2" fill="none"/>` + dots(C, 10, x0 + 16, x1 - 16, cy - h * .6, cy, 1.2, 3);
-    if (pat === 'scales') for (let x = x0; x < x1; x += 7) for (let y = cy - h; y < cy + h; y += 6) s += `<path d="M${x} ${y} q3.5 4 7 0" stroke="${C.a}" stroke-width="1.2" fill="none" opacity=".75"/>`;
-    if (pat === 'net') { for (let i = -6; i < 16; i++) s += `<path d="M${x0 + i * 8} ${cy - h} l${h * 1.6} ${h * 2}M${x0 + i * 8} ${cy + h} l${h * 1.6} ${-h * 2}" stroke="${C.a}" stroke-width="1.3"/>`; s += `<rect x="${x1 - 18}" y="${cy - 4}" width="14" height="${h}" fill="${C.f}" opacity=".6"/>`; }
-    if (pat === 'palette') s += `<path d="M${x0 + 8} ${cy - 3} Q${cx} ${cy - h * .95} ${x1 - 12} ${cy - h * .35} Q${cx + 8} ${cy + 2} ${cx - 6} ${cy + h * .45} Q${x0 + 20} ${cy + h * .35} ${x0 + 8} ${cy - 3}Z" fill="${C.a}"/>`;
-    if (pat === 'chevron') for (let x = x0 + 8; x < x1 - 12; x += 5) s += `<path d="M${x} ${cy - h} l3 ${h * .9} l-3 ${h * .9}" stroke="${C.a}" stroke-width="1.4" fill="none" opacity=".7"/>`;
-    if (pat === 'scribble') for (let i = 0; i < 8; i++) s += `<path d="M${x1 - 30 + (i % 4) * 5} ${cy - 6 + Math.floor(i / 4) * 7} q3 -3 6 0 t6 0" stroke="${C.a}" stroke-width="1.2" fill="none"/>`;
-    s += `</g><path d="${body}" fill="none" ${st(C)}/>`;
-    s += `<path d="M${cx + rx * .28} ${cy + 3} q-12 5 -15 13 q11 -2 17 -9z" fill="${C.f}" ${st(C, 1.2)} opacity=".95"/>`;
-    s += eye(C, x1 - rx * .27, cy - h * .28, Math.min(5, Math.max(3.2, h * .18)));
-    s += `<path d="M${x1 - 1} ${cy + 1} l-4 1.5" stroke="${C.l}" stroke-width="1.3" stroke-linecap="round"/>`;
+    if (pat === 'bars') p.bars.forEach(x => inner += `<rect x="${x - p.bw / 2}" y="0" width="${p.bw}" height="80" fill="${C.a}" ${p.edge ? `stroke="${C.dk}" stroke-width="1.8"` : ''}/>`);
+    if (pat === 'eyebar') inner += `<rect x="${x1 - rx * .3 - 4}" y="0" width="8" height="80" fill="${C.a}"/><circle cx="${x0 + rx * .55}" cy="${cy + 4}" r="5" fill="${C.a}" opacity=".85"/><circle cx="${x0 + rx * .55}" cy="${cy + 4}" r="6.5" ${ln(C, .9, .7)}/>`;
+    if (pat === 'spots') inner += dots(C.a, 26, x0 + 6, x1 - 4, cy - h, cy + h, 1.8);
+    if (pat === 'belly') inner += `<path d="M${x0} ${cy - h * .45} Q${cx} ${cy - h * .7} ${x1} ${cy - 4}" stroke="${C.a}" stroke-width="2" fill="none"/>` + dots(C.a, 10, x0 + 16, x1 - 16, cy - h * .6, cy, 1.2, 3);
+    if (pat === 'scales') for (let x = x0; x < x1; x += 7) for (let y = cy - h; y < cy + h; y += 6) inner += `<path d="M${x} ${y} q3.5 4 7 0" stroke="${C.a}" stroke-width="1.2" fill="none" opacity=".8"/>`;
+    if (pat === 'net') { for (let i = -6; i < 16; i++) inner += `<path d="M${x0 + i * 8} ${cy - h} l${h * 1.6} ${h * 2}M${x0 + i * 8} ${cy + h} l${h * 1.6} ${-h * 2}" stroke="${C.a}" stroke-width="1.3"/>`; }
+    if (pat === 'palette') inner += `<path d="M${x0 + 8} ${cy - 3} Q${cx} ${cy - h * .95} ${x1 - 12} ${cy - h * .35} Q${cx + 8} ${cy + 2} ${cx - 6} ${cy + h * .45} Q${x0 + 20} ${cy + h * .35} ${x0 + 8} ${cy - 3}Z" fill="${C.a}"/>`;
+    if (pat === 'chevron') for (let x = x0 + 8; x < x1 - 12; x += 5) inner += `<path d="M${x} ${cy - h} l3 ${h * .9} l-3 ${h * .9}" stroke="${C.a}" stroke-width="1.4" fill="none" opacity=".75"/>`;
+    if (pat === 'scribble') for (let i = 0; i < 8; i++) inner += `<path d="M${x1 - 30 + (i % 4) * 5} ${cy - 6 + Math.floor(i / 4) * 7} q3 -3 6 0 t6 0" ${ln(C, 1, .8)}/>`;
+    inner += `<path d="M${x1 - rx * .45} ${cy - h * .75} Q${x1 - rx * .3} ${cy} ${x1 - rx * .45} ${cy + h * .75}" ${ln(C, 1.2, .85)}/>`;
+    inner += `<path d="M${x1 - rx * .45} ${cy - h * .4} Q${cx} ${cy - h * .55} ${x0 + 8} ${cy - 1}" ${ln(C, .8, .45)}/>`;
+    s += clipped(body, inner, C.b);
+    s += fin(C, `M${cx + rx * .28} ${cy + 3} q-12 5 -15 13 q11 -2 17 -9z`, [[cx + rx * .28, cy + 3, cx + rx * .28 - 12, cy + 13], [cx + rx * .28, cy + 3, cx + rx * .28 - 8, cy + 14]]);
+    s += eye(C, x1 - rx * .27, cy - h * .28, Math.min(5, Math.max(3.4, h * .19)));
+    s += `<path d="M${x1 - 1} ${cy + 1} l-4 1.5" stroke="${C.dk}" stroke-width="1.3" stroke-linecap="round"/>`;
     return s;
   },
   puffer(C) {
-    let s = `<path d="M36 42 L20 32 Q24 42 20 52Z" fill="${C.f}" ${st(C)}/>`;
-    for (let a = 0; a < 360; a += 24) { const r = a * Math.PI / 180; s += `<path d="M${60 + Math.cos(r) * 25} ${42 + Math.sin(r) * 25} L${60 + Math.cos(r) * 31} ${42 + Math.sin(r) * 31}" stroke="${C.l}" stroke-width="1.6" stroke-linecap="round"/>`; }
-    s += `<circle cx="60" cy="42" r="26" fill="${C.b}" ${st(C)}/><ellipse cx="62" cy="54" rx="20" ry="10" fill="#fff" opacity=".35"/>` + dots(C, 16, 42, 76, 24, 46, 1.8);
-    s += `<path d="M58 44 q-8 6 -10 14 q9 -2 14 -9z" fill="${C.f}" ${st(C, 1.2)}/>` + eye(C, 74, 34, 5.5) + `<circle cx="86" cy="45" r="2.4" fill="${C.l}"/>`;
+    let s = fin(C, 'M36 42 L20 32 Q24 42 20 52Z', [[35, 42, 22, 35], [35, 42, 21, 42], [35, 42, 22, 49]]);
+    for (let a = 0; a < 360; a += 24) { const r = a * Math.PI / 180; s += `<path d="M${(60 + Math.cos(r) * 25).toFixed(1)} ${(42 + Math.sin(r) * 25).toFixed(1)} L${(60 + Math.cos(r) * 30).toFixed(1)} ${(42 + Math.sin(r) * 30).toFixed(1)}" stroke="${C.dk}" stroke-width="1.6" stroke-linecap="round"/>`; }
+    s += clipped('M34 42 A26 26 0 1 0 86 42 A26 26 0 1 0 34 42Z',
+      `<rect x="30" y="47" width="60" height="30" fill="${C.lt}"/>` + blotch(C.dk, 6, 38, 82, 18, 44, 7, 2, .25) + dots(C.a, 16, 40, 78, 20, 46, 1.8) + `<path d="M40 48 Q60 44 84 46" ${ln(C, 1, .6)}/>`, C.b);
+    s += fin(C, 'M58 44 q-8 6 -10 14 q9 -2 14 -9z', [[58, 44, 50, 55]]) + eye(C, 74, 34, 5.5) + `<ellipse cx="86" cy="45" rx="2.6" ry="2" fill="${C.dk}"/>`;
     return s;
   },
   box(C) {
-    let s = `<path d="M32 40 Q18 28 16 40 Q18 52 32 40Z" fill="${C.f}" ${st(C)}/><defs><clipPath id="k"><rect x="30" y="22" width="58" height="38" rx="13"/></clipPath></defs>`;
-    s += `<rect x="30" y="22" width="58" height="38" rx="13" fill="${C.b}"/><g clip-path="url(#k)">${dots(C, 16, 36, 82, 26, 56, 1.8)}</g><rect x="30" y="22" width="58" height="38" rx="13" fill="none" ${st(C)}/>`;
-    s += `<path d="M60 46 q-7 5 -8 11 q7 -1 11 -7z" fill="${C.f}" ${st(C, 1.2)}/>` + eye(C, 76, 33, 5) + `<ellipse cx="90" cy="45" rx="3" ry="2.4" fill="${C.f}" ${st(C, 1)}/>`;
+    let s = fin(C, 'M32 40 Q18 28 16 40 Q18 52 32 40Z', [[31, 40, 19, 34], [31, 40, 18, 40], [31, 40, 19, 46]]);
+    const R = rnd(4); let spots = '';
+    for (let i = 0; i < 14; i++) { const x = 36 + R() * 48, y = 26 + R() * 30; spots += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.3" fill="${C.a}"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r=".9" fill="${C.ln}"/>`; }
+    s += clipped('M43 22 H75 Q88 22 88 35 V47 Q88 60 75 60 H43 Q30 60 30 47 V35 Q30 22 43 22Z', `<rect x="28" y="48" width="64" height="14" fill="${C.lt}"/>` + spots + `<path d="M34 34 H84 M34 48 H84" ${ln(C, .8, .5)}/>`, C.b);
+    s += fin(C, 'M60 46 q-7 5 -8 11 q7 -1 11 -7z', []) + eye(C, 76, 33, 5) + `<ellipse cx="90" cy="45" rx="3" ry="2.4" fill="${C.f}"/>`;
     return s;
   },
   shark(C, p) {
     const wh = p.whale;
     const body = wh ? 'M20 40 Q36 22 76 24 Q108 26 114 38 Q108 52 76 54 Q36 56 20 40Z' : 'M20 40 Q40 27 72 28 Q100 30 114 40 Q100 49 72 50 Q40 52 20 40Z';
-    let s = '';
-    s += p.long ? `<path d="M24 38 Q10 36 0 34 L0 44 Q10 44 24 43Z" fill="${C.f}" ${st(C)}/>` : `<path d="M24 38 L4 16 Q10 36 6 52 L24 43Z" fill="${C.f}" ${st(C)}/>`;
-    s += `<path d="M34 34 L40 25 L46 33Z" fill="${C.f}" ${st(C)}/><path d="M56 29 L64 ${wh ? 12 : 11} L74 28Z" fill="${C.f}" ${st(C)}/><path d="M76 48 L64 66 L88 49Z" fill="${C.f}" ${st(C)}/>`;
-    if (p.tips) s += '<path d="M62 14 L64 11 L66 15Z" fill="#111"/><path d="M66 62 L64 66 L69 63Z" fill="#111"/><path d="M6 18 L4 16 L8 20Z" fill="#111"/>';
-    s += `<defs><clipPath id="k"><path d="${body}"/></clipPath></defs><path d="${body}" fill="${C.b}"/><g clip-path="url(#k)">`;
-    s += `<path d="M20 42 Q60 46 114 40 L114 60 L20 60Z" fill="#fff" opacity="${wh ? .25 : .32}"/>`;
-    if (p.spots) s += dots(C, wh ? 40 : 28, 22, 104, 24, 50, wh ? 1.7 : 2);
-    if (wh) for (let i = 0; i < 3; i++) s += `<path d="M26 ${33 + i * 5} Q70 ${30 + i * 5} 104 ${34 + i * 4}" stroke="${C.a}" stroke-width=".9" fill="none" opacity=".7"/>`;
-    s += `</g><path d="${body}" fill="none" ${st(C)}/>`;
-    for (let i = 0; i < 4; i++) s += `<path d="M${88 + i * 3} 36 v8" stroke="${C.l}" stroke-width="1" opacity=".7"/>`;
-    s += `<circle cx="${wh ? 104 : 102}" cy="${wh ? 36 : 37}" r="2.2" fill="${C.p}"/>`;
-    if (wh) s += `<path d="M112 43 H102" stroke="${C.l}" stroke-width="1.4" stroke-linecap="round"/>`;
+    let s = p.long ? fin(C, 'M24 38 Q10 36 0 34 L0 44 Q10 44 24 43Z', [[22, 40, 2, 39]]) : fin(C, 'M24 38 L4 16 Q10 36 6 52 L24 43Z', [[22, 39, 7, 20], [22, 41, 8, 48]]);
+    s += fin(C, 'M34 34 L40 25 L46 33Z', []) + fin(C, `M56 29 L64 ${wh ? 12 : 11} L74 28Z`, [[60, 28, 63, 15], [66, 28, 65, 15]]) + fin(C, 'M76 48 L64 66 L88 49Z', [[78, 49, 67, 63], [82, 49, 70, 63]]);
+    if (p.tips) s += '<path d="M62 14 L64 11 L66 15Z" fill="#141414"/><path d="M66 62 L64 66 L69 63Z" fill="#141414"/><path d="M6 18 L4 16 L8 20Z" fill="#141414"/>';
+    let inner = `<path d="M20 43 Q60 47 114 40 L114 60 L20 60Z" fill="${C.lt}"/>` + blotch(C.dk, 8, 24, 104, 24, 40, 5, 9, .22);
+    if (p.spots) inner += dots(C.a, wh ? 44 : 30, 22, 106, 24, wh ? 48 : 46, wh ? 1.6 : 2);
+    if (wh) for (let i = 0; i < 3; i++) inner += `<path d="M26 ${33 + i * 5} Q70 ${30 + i * 5} 104 ${34 + i * 4}" ${ln(C, .9, .7)}/>`;
+    inner += `<path d="M26 38 Q70 30 108 36" ${ln(C, .8, .4)}/>`;
+    s += clipped(body, inner, C.b);
+    s += `<path d="M86 36 v8 M89 35.5 v8 M92 35 v8 M95 35 v7" ${ln(C, 1, .75)}/>`;
+    s += `<circle cx="${wh ? 104 : 102}" cy="${wh ? 36 : 37}" r="2.4" fill="${C.p}"/><circle cx="${wh ? 104.7 : 102.7}" cy="${wh ? 35.3 : 36.3}" r=".7" fill="${C.ln}"/>`;
+    if (wh) s += `<path d="M112 43 H102" stroke="${C.dk}" stroke-width="1.4" stroke-linecap="round"/>`;
     return s;
   },
   ray(C, p) {
     let body = 'M96 40 Q76 22 50 6 Q54 26 34 40 Q54 54 50 74 Q76 58 96 40Z';
     if (p.manta) body = 'M92 40 Q74 18 34 2 Q50 26 36 40 Q50 54 34 78 Q74 62 92 40Z';
     if (p.eagle) body = 'M90 40 Q72 20 40 6 Q50 28 38 40 Q50 52 40 74 Q72 60 90 40Z';
-    let s = `<path d="M36 40 L${p.ribbon ? 6 : 0} 40" stroke="${C.l}" stroke-width="${p.ribbon ? 3 : 2}" stroke-linecap="round"/>`;
-    if (p.ribbon) s += `<path d="M34 40 L8 40" stroke="${C.a}" stroke-width="1.4"/>`;
-    s += `<defs><clipPath id="k"><path d="${body}"/></clipPath></defs><path d="${body}" fill="${C.b}"/><g clip-path="url(#k)">`;
-    if (p.manta) s += `<path d="M84 30 Q66 20 58 28 Q68 30 72 38Z" fill="${C.a}" opacity=".9"/><path d="M84 50 Q66 60 58 52 Q68 50 72 42Z" fill="${C.a}" opacity=".9"/>`;
-    else s += dots(C, p.eagle ? 30 : 24, 36, 92, 8, 72, p.eagle ? 1.6 : 2.2);
-    s += `</g><path d="${body}" fill="none" ${st(C)}/>`;
-    if (p.manta) s += `<path d="M90 36 Q100 30 104 34 Q98 34 94 39Z M90 44 Q100 50 104 46 Q98 46 94 41Z" fill="${C.b}" ${st(C, 1.2)}/>`;
-    if (p.eagle) s += `<ellipse cx="96" cy="40" rx="9" ry="5" fill="${C.b}" ${st(C, 1.2)}/>`;
+    let s = `<path d="M36 40 L${p.ribbon ? 6 : 0} 40" stroke="${C.dk}" stroke-width="${p.ribbon ? 3.2 : 2}" stroke-linecap="round"/>`;
+    if (p.ribbon) s += `<path d="M34 40 L8 40" stroke="${C.a}" stroke-width="1.2"/>`;
+    let inner = blotch(C.dk, 10, 38, 92, 6, 74, 6, 11, .25);
+    if (p.manta) inner += `<path d="M84 30 Q66 20 58 28 Q68 30 72 38Z" fill="${C.a}" opacity=".9"/><path d="M84 50 Q66 60 58 52 Q68 50 72 42Z" fill="${C.a}" opacity=".9"/>` + [0, 1, 2].map(i => `<path d="M${50 - i * 5} ${14 + i * 6} Q64 34 ${86 - i * 2} 38" ${ln(C, .8, .45)}/><path d="M${50 - i * 5} ${66 - i * 6} Q64 46 ${86 - i * 2} 42" ${ln(C, .8, .45)}/>`).join('');
+    else inner += dots(C.a, p.eagle ? 30 : 24, 36, 92, 8, 72, p.eagle ? 1.6 : 2.2);
+    inner += `<path d="M36 40 H92" ${ln(C, 1, .55)}/>`;
+    s += clipped(body, inner, C.b);
+    if (p.manta) s += `<path d="M90 36 Q100 30 104 34 Q98 34 94 39Z M90 44 Q100 50 104 46 Q98 46 94 41Z" fill="${C.b}"/><path d="M92 36 Q99 32 102 34 M92 44 Q99 48 102 46" ${ln(C, .7, .6)}/>`;
+    if (p.eagle) s += `<ellipse cx="96" cy="40" rx="9" ry="5" fill="${C.b}"/><path d="M90 40 H104" ${ln(C, .7, .5)}/>`;
     s += eye(C, p.eagle ? 90 : 84, 33, 2.4) + eye(C, p.eagle ? 90 : 84, 47, 2.4);
     return s;
   },
-  turtle(C) {
-    let s = `<path d="M40 50 Q26 60 22 70 Q36 66 46 55Z" fill="${C.f}" ${st(C)}/><path d="M72 22 Q68 8 52 4 Q78 4 86 24Z" fill="${C.f}" ${st(C)}/>`;
-    s += `<ellipse cx="100" cy="38" rx="12" ry="9" fill="${C.f}" ${st(C)}/>` + eye(C, 104, 35, 2.4) + `<path d="M111 40 l-4 1" stroke="${C.l}" stroke-width="1.2"/>`;
-    s += `<defs><clipPath id="k"><ellipse cx="60" cy="40" rx="34" ry="21"/></clipPath></defs><ellipse cx="60" cy="40" rx="34" ry="21" fill="${C.b}"/><g clip-path="url(#k)">`;
-    s += dots(C, 14, 32, 88, 24, 56, 4.5, 5);
-    s += `<path d="M48 22 L44 40 L48 58 M72 22 L76 40 L72 58 M44 40 H76 M48 22 L60 30 L72 22 M48 58 L60 50 L72 58 M60 30 V50" stroke="${C.l}" stroke-width="1.3" fill="none" opacity=".75"/></g>`;
-    s += `<ellipse cx="60" cy="40" rx="34" ry="21" fill="none" ${st(C, 2)}/><path d="M74 54 Q74 70 58 78 Q82 74 88 54Z" fill="${C.f}" ${st(C)}/>`;
+  turtle(C, p) {
+    const shell = 'M28 40 C28 26 44 19 60 19 C78 19 90 28 90 40 C90 52 78 61 60 61 C44 61 28 54 28 40Z';
+    const flip = (d, rays) => `<path d="${d}" fill="${C.f}"/><path d="${rays}" ${ln(C, .8, .7)}/>`;
+    let s = '';
+    s += flip('M34 34 Q22 28 14 22 Q20 32 32 40Z', 'M30 33 L20 27');
+    s += flip('M34 47 Q20 52 12 60 Q26 58 36 51Z', 'M30 50 L18 57');
+    s += flip('M74 24 C84 14 90 6 88 0 C80 6 68 14 62 22Z', 'M74 18 L68 22 M80 12 L74 16 M85 6 L79 10 M88 1 C82 8 72 16 64 22');
+    // neck and head with cream scale cells
+    s += `<path d="M84 34 Q92 32 94 36 L94 46 Q90 48 84 46Z" fill="${C.f}"/>`;
+    const head = p.hook ? 'M88 36 Q92 26 104 26 Q114 28 116 36 Q118 42 114 44 Q108 47 98 46 Q90 46 88 40Z' : 'M88 36 Q92 27 104 27 Q114 28 115 37 Q115 44 108 46 Q98 47 90 44Z';
+    s += clipped(head, `<rect x="86" y="40" width="34" height="10" fill="${C.lt}"/><path d="M96 28 L100 33 L106 30 M100 33 L98 38 M106 30 L110 36 M92 34 L98 38 L94 42" ${ln(C, 1, .9)}/>`, C.f);
+    s += eye(C, 104, 35, 2.8) + `<path d="M108 43 Q112 42 115 40" stroke="${C.dk}" stroke-width="1.1" fill="none"/>`;
+    // shell: vertebral and costal scutes, marginal rim
+    let inner = `<path d="M28 44 C40 60 80 60 90 44 L90 70 L28 70Z" fill="${C.dk}" opacity=".35"/>`;
+    inner += p.tortoise ? blotch(C.a, 14, 32, 86, 22, 58, 6, 3, .75) : blotch(C.a, 12, 32, 86, 22, 58, 5, 8, .45);
+    inner += `<path d="M31 40 C31 29 45 23 60 23 C76 23 86 30 86.5 40 C86 51 76 57 60 57 C45 57 31 51 31 40Z" ${ln(C, 1.1, .9)}/>`;
+    inner += `<path d="M36 36 Q60 31 82 36 M36 44 Q60 49 82 44 M46 34 L44 46 M58 32.5 L58 47.5 M70 33 L72 47 M46 34 L42 24 M58 32.5 L58 23 M70 33 L74 24 M44 46 L42 56 M58 47.5 L58 57 M72 47 L74 56" ${ln(C, 1.1, .9)}/>`;
+    for (let a = 0; a < 360; a += 15) { const r = a * Math.PI / 180; inner += `<path d="M${(59 + Math.cos(r) * 27.5).toFixed(1)} ${(40 + Math.sin(r) * 17.5).toFixed(1)} L${(59 + Math.cos(r) * 31).toFixed(1)} ${(40 + Math.sin(r) * 21).toFixed(1)}" ${ln(C, .8, .7)}/>`; }
+    s += clipped(shell, inner, C.b);
+    s += flip('M72 52 C86 60 90 70 86 79 C80 70 68 64 60 58Z', 'M72 56 L76 60 M78 60 L80 65 M83 66 L84 71 M86 78 C80 69 70 62 62 58');
     return s;
   },
   octopus(C) {
     let s = '';
-    const arms = [[48, -8], [56, -4], [64, 0], [72, 4], [80, 8], [88, 12]];
-    arms.forEach(([x, d], i) => {
+    [[48, -8], [56, -4], [64, 0], [72, 4], [80, 8], [88, 12]].forEach(([x, d], i) => {
       const path = `M${x} 44 q${d - 4} 14 ${d * .6} 24 q${3 + i} 6 ${10 - i} 2`;
-      s += `<path d="${path}" stroke="${C.l}" stroke-width="8.5" fill="none" stroke-linecap="round"/><path d="${path}" stroke="${i % 2 ? C.b : C.f}" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+      s += `<path d="${path}" stroke="${i % 2 ? C.b : C.f}" stroke-width="6.5" fill="none" stroke-linecap="round"/><path d="${path}" stroke="${C.lt}" stroke-width="2.4" fill="none" stroke-dasharray=".5 4" stroke-linecap="round"/>`;
     });
-    s += `<ellipse cx="62" cy="28" rx="27" ry="20" transform="rotate(-16 62 28)" fill="${C.b}" ${st(C)}/>` + dots(C, 10, 42, 76, 14, 36, 2);
-    s += `<ellipse cx="68" cy="44" rx="24" ry="7" fill="${C.b}" ${st(C, 1.2)}/>`;
-    s += `<circle cx="80" cy="38" r="5" fill="${C.e}" ${st(C, 1.1)}/><rect x="77" y="37" width="6" height="2.2" rx="1" fill="${C.p}"/>`;
+    s += clipped('M36 34 C34 16 56 6 74 12 C90 18 92 34 82 44 C70 50 44 48 36 34Z', `<path d="M36 36 C50 44 72 44 90 30 L90 60 L30 60Z" fill="${C.lt}" opacity=".5"/>` + blotch(C.dk, 10, 38, 88, 10, 44, 4.5, 6, .3) + dots(C.a, 10, 42, 80, 14, 36, 1.8) + `<path d="M44 20 Q58 10 76 16" ${ln(C, 1, .6)}/>`, C.b);
+    s += `<ellipse cx="68" cy="44" rx="24" ry="7" fill="${C.b}"/><path d="M48 44 Q68 48 90 44" ${ln(C, .8, .5)}/>`;
+    s += `<circle cx="80" cy="37" r="5" fill="${C.e}"/><rect x="77" y="36" width="6" height="2.2" rx="1" fill="${C.p}"/>`;
     return s;
   },
   cuttle(C) {
-    let s = `<ellipse cx="54" cy="40" rx="42" ry="20" fill="${C.a}" opacity=".6" ${st(C, 1)}/>`;
-    s += `<path d="M90 34 Q108 34 116 40 Q108 46 90 46Z" fill="${C.f}" ${st(C)}/><path d="M96 38 H114 M96 42 H112" stroke="${C.l}" stroke-width=".9"/>`;
-    s += `<defs><clipPath id="k"><ellipse cx="54" cy="40" rx="38" ry="16"/></clipPath></defs><ellipse cx="54" cy="40" rx="38" ry="16" fill="${C.b}"/><g clip-path="url(#k)">`;
-    for (let x = 22; x < 90; x += 7) s += `<path d="M${x} 24 q4 16 0 32" stroke="${C.a}" stroke-width="2.2" fill="none" opacity=".8"/>`;
-    s += `</g><ellipse cx="54" cy="40" rx="38" ry="16" fill="none" ${st(C)}/>`;
-    s += `<circle cx="88" cy="36" r="4.5" fill="${C.e}" ${st(C, 1.1)}/><path d="M85 36 q1.5 2 3 0 q1.5 2 3 0" stroke="${C.p}" stroke-width="1.6" fill="none"/>`;
+    let s = `<ellipse cx="54" cy="40" rx="42" ry="20" fill="${C.lt}" opacity=".55"/><ellipse cx="54" cy="40" rx="41" ry="19" ${ln(C, .8, .6)}/>`;
+    s += `<path d="M90 34 Q108 34 116 40 Q108 46 90 46Z" fill="${C.f}"/><path d="M96 38 H114 M96 42 H112" ${ln(C, .8, .6)}/>`;
+    let inner = `<rect x="10" y="44" width="90" height="14" fill="${C.lt}" opacity=".5"/>`;
+    for (let x = 22; x < 90; x += 7) inner += `<path d="M${x} 24 q4 16 0 32" stroke="${C.a}" stroke-width="2.2" fill="none" opacity=".85"/>`;
+    inner += `<path d="M20 30 Q54 22 90 34" ${ln(C, .9, .6)}/>`;
+    s += clipped('M16 40 C16 30 34 24 54 24 C76 24 92 31 92 40 C92 49 76 56 54 56 C34 56 16 50 16 40Z', inner, C.b);
+    s += `<circle cx="88" cy="36" r="4.5" fill="${C.e}"/><path d="M85 36 q1.5 2 3 0 q1.5 2 3 0" stroke="${C.p}" stroke-width="1.6" fill="none"/>`;
     return s;
   },
   squid(C) {
-    let s = `<path d="M8 40 Q12 26 34 30 L34 50 Q12 54 8 40Z" fill="${C.a}" opacity=".55" ${st(C, 1)}/>`;
-    s += `<path d="M88 36 Q104 34 118 30 M88 40 H118 M88 44 Q104 46 118 50 M88 38 Q104 38 114 34 M88 42 Q104 42 114 46" stroke="${C.b}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
-    s += `<path d="M10 40 Q30 28 84 32 L88 40 L84 48 Q30 52 10 40Z" fill="${C.b}" ${st(C)}/>` + dots(C, 18, 18, 80, 33, 47, 1.3);
-    s += `<path d="M20 40 Q50 36 82 38" stroke="#fff" stroke-width="1.2" fill="none" opacity=".6"/>` + eye(C, 84, 38, 4.6);
+    let s = `<path d="M8 40 Q12 26 34 30 L34 50 Q12 54 8 40Z" fill="${C.a}" opacity=".5"/><path d="M10 40 Q14 28 32 31 M10 40 Q14 52 32 49" ${ln(C, .8, .6)}/>`;
+    s += `<path d="M88 36 Q104 34 118 30 M88 40 H118 M88 44 Q104 46 118 50 M88 38 Q104 38 114 34 M88 42 Q104 42 114 46" stroke="${C.f}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+    s += clipped('M10 40 Q30 28 84 32 L88 40 L84 48 Q30 52 10 40Z', `<rect x="8" y="42" width="84" height="12" fill="${C.lt}"/>` + dots(C.a, 22, 16, 82, 32, 46, 1.3) + `<path d="M20 40 Q50 36 82 38" ${ln(C, 1, .7)}/>`, C.b);
+    s += eye(C, 84, 38, 4.4);
     return s;
   },
   seahorse(C) {
     const sp = 'M62 20 C52 30 52 44 60 52 C68 60 64 72 54 72 C46 72 46 64 52 64';
-    let s = `<path d="M52 38 q-12 4 -12 12 q8 -2 12 -6z" fill="${C.f}" ${st(C, 1.2)}/>`;
-    s += `<path d="${sp}" stroke="${C.l}" stroke-width="15.5" fill="none" stroke-linecap="round"/><path d="${sp}" stroke="${C.b}" stroke-width="12.5" fill="none" stroke-linecap="round"/>`;
-    for (let i = 0; i < 7; i++) s += `<circle cx="${[58, 55, 55, 58, 62, 62, 58][i]}" cy="${24 + i * 6.5}" r="1.4" fill="${C.a}"/>`;
-    s += `<path d="M66 12 L84 16 Q86 18 84 20 L66 22Z" fill="${C.b}" ${st(C)}/><circle cx="64" cy="16" r="8.5" fill="${C.b}" ${st(C)}/>`;
-    s += `<path d="M60 8 l2 -6 l3 5 l3 -4 l1 6" fill="${C.f}" ${st(C, 1.1)}/>` + eye(C, 66, 14, 2.8);
+    let s = fin(C, 'M52 38 q-12 4 -12 12 q8 -2 12 -6z', [[52, 39, 42, 48], [52, 41, 45, 48]]);
+    s += `<path d="${sp}" stroke="${C.b}" stroke-width="12.5" fill="none" stroke-linecap="round"/>`;
+    s += `<path d="M58 26 C53 34 54 44 60 50" stroke="${C.lt}" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7" transform="translate(4 1)"/>`;
+    s += `<path d="${sp}" stroke="${C.ln}" stroke-width="12" fill="none" stroke-dasharray=".8 4.6" opacity=".75"/>`;
+    s += dots(C.a, 8, 52, 64, 22, 64, 1.3, 2);
+    s += `<path d="M66 12 L84 16 Q86 18 84 20 L66 22Z" fill="${C.b}"/><circle cx="64" cy="16" r="8.5" fill="${C.b}"/>`;
+    s += `<path d="M60 8 l2 -6 l3 5 l3 -4 l1 6Z" fill="${C.f}"/><path d="M58 20 Q64 24 70 20" ${ln(C, .9, .7)}/>` + eye(C, 66, 14, 2.8);
     return s;
   },
   pipe(C) {
     let s = '<g transform="rotate(28 60 40)">';
-    s += `<path d="M34 40 L18 30 L20 40 L18 50Z" fill="${C.a}" ${st(C, 1.2)}/>`;
-    s += `<path d="M44 38 L54 14 L70 36Z" fill="${C.a}" ${st(C, 1.2)}/><path d="M44 42 L52 66 L66 44Z" fill="${C.a}" ${st(C, 1.2)}/>`;
-    s += dots({a: C.f}, 12, 46, 64, 18, 62, 1.3);
-    s += `<ellipse cx="60" cy="40" rx="28" ry="6" fill="${C.b}" ${st(C)}/><path d="M86 38 H110 V42 H86Z" fill="${C.b}" ${st(C, 1.2)}/>`;
-    s += dots({a: C.f}, 8, 38, 82, 37, 43, .9);
-    s += eye({...C, e: '#f4f4f4', p: '#e84a5f'}, 84, 38, 2.6) + '</g>';
+    s += fin(C, 'M34 40 L18 30 L20 40 L18 50Z', [[33, 40, 20, 33], [33, 40, 21, 47]], C.a);
+    s += fin(C, 'M44 38 L54 14 L70 36Z', [[50, 36, 54, 18], [58, 36, 56, 20], [64, 36, 58, 26]], C.a) + fin(C, 'M44 42 L52 66 L66 44Z', [[50, 44, 52, 62], [58, 44, 54, 60]], C.a);
+    s += dots(C.f, 12, 46, 64, 18, 62, 1.3);
+    s += `<ellipse cx="60" cy="40" rx="28" ry="6" fill="${C.b}"/><path d="M86 38 H110 V42 H86Z" fill="${C.b}"/><path d="M34 40 H106" ${ln(C, .8, .6)}/>`;
+    s += dots(C.f, 8, 38, 82, 37, 43, .9) + eye({...C, e: C.f, p: C.a}, 84, 38, 2.6) + '</g>';
     return s;
   },
   nudi(C) {
     const body = 'M12 60 Q14 44 40 42 Q80 38 104 50 Q112 60 100 62 Z';
     let s = `<path d="M24 44 l-4 -10 M28 43 l0 -12 M32 43 l4 -11 M26 36 l-4 -4 M30 34 l4 -4" stroke="${C.f}" stroke-width="3" stroke-linecap="round"/>`;
-    s += `<path d="M92 46 L90 28 M98 48 L100 30" stroke="${C.f}" stroke-width="4.2" stroke-linecap="round"/>`;
-    s += `<defs><clipPath id="k"><path d="${body}"/></clipPath></defs><path d="${body}" fill="${C.b}"/><g clip-path="url(#k)">${dots(C, 16, 20, 100, 44, 58, 1.7)}</g>`;
-    s += `<path d="${body}" fill="none" stroke="${C.a}" stroke-width="4"/><path d="${body}" fill="none" ${st(C, 1)}/>`;
+    s += `<path d="M92 46 L90 28 M98 48 L100 30" stroke="${C.f}" stroke-width="4.2" stroke-linecap="round"/><path d="M91.5 44 L90.2 30 M97.8 46 L99.8 32" stroke="${C.ln}" stroke-width="4" stroke-dasharray=".8 2.6" opacity=".6"/>`;
+    s += clipped(body, dots(C.a, 16, 20, 100, 44, 58, 1.7) + `<path d="M12 60 Q60 52 108 58 L108 70 L12 70Z" fill="${C.lt}" opacity=".6"/>`, C.b);
+    s += `<path d="${body}" fill="none" stroke="${C.a}" stroke-width="3.6"/>`;
     return s;
   },
   shrimp(C, p) {
     const segs = [[92, 38, 12, 9], [80, 40, 9, 9.5], [69, 42, 8.5, 9], [59, 45, 8, 8.5], [50, 49, 7.5, 7.5], [43, 54, 6.5, 6.5]];
-    let s = '';
-    s += `<path d="M98 34 Q112 14 118 4 M98 34 Q116 24 118 16" stroke="${p.mantis ? C.f : C.a}" stroke-width="1.3" fill="none"/>`;
-    for (let i = 0; i < 6; i++) s += `<path d="M${54 + i * 8} 50 l${-2 - i % 2} 12" stroke="${C.l}" stroke-width="1.4" stroke-linecap="round"/>`;
-    s += `<path d="M40 56 L28 66 L40 64 L34 72 L46 60Z" fill="${p.mantis ? C.f : C.b}" ${st(C, 1.2)}/>`;
-    segs.slice().reverse().forEach(([x, y, rx, ry]) => s += `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${C.b}" ${st(C, 1.2)}/>`);
+    let s = `<path d="M98 34 Q112 14 118 4 M98 34 Q116 24 118 16" stroke="${p.mantis ? C.f : C.a}" stroke-width="1.2" fill="none"/>`;
+    for (let i = 0; i < 6; i++) s += `<path d="M${54 + i * 8} 50 l${-2 - i % 2} 12" stroke="${C.dk}" stroke-width="1.4" stroke-linecap="round"/>`;
+    s += fin(C, 'M40 56 L28 66 L40 64 L34 72 L46 60Z', [[40, 58, 31, 66], [42, 60, 36, 70]], p.mantis ? C.f : C.b);
+    segs.slice().reverse().forEach(([x, y, rx, ry]) => s += `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${C.b}"/><path d="M${x - rx * .7} ${y - ry * .7} Q${x - rx} ${y} ${x - rx * .7} ${y + ry * .7}" ${ln(C, .9, .7)}/>`);
     if (!p.mantis) s += `<path d="M46 50 Q60 36 100 32" stroke="${C.a}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
     else {
-      s += dots(C, 8, 50, 96, 36, 48, 1.8);
-      s += `<path d="M96 44 Q104 56 94 60 Q100 52 92 48Z" fill="${C.a}" ${st(C, 1.2)}/>`;
-      s += `<circle cx="100" cy="26" r="3.6" fill="${C.f}" ${st(C, 1)}/><circle cx="106" cy="28" r="3.6" fill="${C.f}" ${st(C, 1)}/>`;
+      s += dots(C.a, 8, 50, 96, 36, 48, 1.8);
+      s += `<path d="M96 44 Q104 56 94 60 Q100 52 92 48Z" fill="${C.a}"/>`;
+      s += `<circle cx="100" cy="26" r="3.6" fill="${C.f}"/><circle cx="106" cy="28" r="3.6" fill="${C.f}"/><circle cx="100.8" cy="25.4" r="1" fill="${C.ln}"/><circle cx="106.8" cy="27.4" r="1" fill="${C.ln}"/>`;
     }
-    if (!p.mantis) s += `<path d="M98 36 L102 28" stroke="${C.l}" stroke-width="1.4"/><circle cx="102" cy="27" r="2.4" fill="${C.p}"/>`;
+    if (!p.mantis) s += `<path d="M98 36 L102 28" stroke="${C.dk}" stroke-width="1.4"/><circle cx="102" cy="27" r="2.4" fill="${C.p}"/>`;
     return s;
   },
   crab(C, p) {
     let s = '';
     if (p.shell) {
-      s += `<circle cx="46" cy="42" r="25" fill="${C.a}" ${st(C)}/><path d="M46 42 m0 -4 a4 4 0 1 1 -4 4 a9 9 0 1 1 9 9 a15 15 0 1 1 -15 -15" stroke="${C.l}" stroke-width="1.4" fill="none"/>`;
-      for (let i = 0; i < 3; i++) s += `<path d="M${72 + i * 6} 54 l${4 + i} 12" stroke="${C.l}" stroke-width="2.6" stroke-linecap="round"/>`;
-      s += `<ellipse cx="76" cy="50" rx="13" ry="10" fill="${C.b}" ${st(C)}/><circle cx="94" cy="48" r="8" fill="${C.f}" ${st(C)}/>`;
-      s += `<path d="M80 42 L80 32 M86 42 L88 32" stroke="${C.l}" stroke-width="1.8"/><circle cx="80" cy="31" r="2.5" fill="${C.p}"/><circle cx="88" cy="31" r="2.5" fill="${C.p}"/>`;
+      s += clipped('M21 42 A25 25 0 1 0 71 42 A25 25 0 1 0 21 42Z', blotch(C.dk, 6, 24, 68, 20, 64, 7, 4, .2) + `<path d="M46 42 m0 -4 a4 4 0 1 1 -4 4 a9 9 0 1 1 9 9 a15 15 0 1 1 -15 -15" ${ln(C, 1.3, .9)}/>`, C.a);
+      for (let i = 0; i < 3; i++) s += `<path d="M${72 + i * 6} 54 l${4 + i} 12" stroke="${C.f}" stroke-width="2.6" stroke-linecap="round"/>`;
+      s += `<ellipse cx="76" cy="50" rx="13" ry="10" fill="${C.b}"/><circle cx="94" cy="48" r="8" fill="${C.f}"/><path d="M90 44 Q95 42 99 46" ${ln(C, .9, .7)}/>`;
+      s += `<path d="M80 42 L80 32 M86 42 L88 32" stroke="${C.dk}" stroke-width="1.8"/><circle cx="80" cy="31" r="2.5" fill="${C.p}"/><circle cx="88" cy="31" r="2.5" fill="${C.p}"/>`;
       return s;
     }
-    for (let i = 0; i < 3; i++) s += `<path d="M${46 + i * 6} 52 l${-10 - i * 3} 14 M${74 - i * 6} 52 l${10 + i * 3} 14" stroke="${C.l}" stroke-width="2.6" stroke-linecap="round"/>`;
-    s += `<ellipse cx="60" cy="46" rx="26" ry="16" fill="${C.b}" ${st(C)}/><circle cx="26" cy="34" r="9" fill="${C.f}" ${st(C)}/><circle cx="94" cy="34" r="9" fill="${C.f}" ${st(C)}/>`;
-    s += `<path d="M54 32 V24 M66 32 V24" stroke="${C.l}" stroke-width="1.8"/><circle cx="54" cy="23" r="2.6" fill="${C.p}"/><circle cx="66" cy="23" r="2.6" fill="${C.p}"/>`;
+    for (let i = 0; i < 3; i++) s += `<path d="M${46 + i * 6} 52 l${-10 - i * 3} 14 M${74 - i * 6} 52 l${10 + i * 3} 14" stroke="${C.f}" stroke-width="2.6" stroke-linecap="round"/>`;
+    s += clipped('M34 46 A26 16 0 1 0 86 46 A26 16 0 1 0 34 46Z', `<rect x="30" y="48" width="60" height="16" fill="${C.lt}"/>` + blotch(C.dk, 6, 38, 82, 32, 46, 5, 3, .25), C.b);
+    s += `<circle cx="26" cy="34" r="9" fill="${C.f}"/><circle cx="94" cy="34" r="9" fill="${C.f}"/>`;
+    s += `<path d="M54 32 V24 M66 32 V24" stroke="${C.dk}" stroke-width="1.8"/><circle cx="54" cy="23" r="2.6" fill="${C.p}"/><circle cx="66" cy="23" r="2.6" fill="${C.p}"/>`;
     return s;
   },
   jelly(C) {
     let s = '';
-    for (let i = 0; i < 7; i++) { const x = 36 + i * 8; s += `<path d="M${x} 40 q-4 8 0 16 t0 16" stroke="${C.a}" stroke-width="1.6" fill="none" opacity=".85"/>`; }
+    for (let i = 0; i < 7; i++) { const x = 36 + i * 8; s += `<path d="M${x} 40 q-4 8 0 16 t0 16" stroke="${C.a}" stroke-width="1.5" fill="none" opacity=".85"/>`; }
     s += `<path d="M52 40 q-6 14 2 30 M68 40 q6 14 -2 30" stroke="${C.f}" stroke-width="4" fill="none" stroke-linecap="round" opacity=".9"/>`;
-    s += `<path d="M30 42 Q30 8 60 8 Q90 8 90 42 Q82 38 75 42 Q68 38 60 42 Q52 38 45 42 Q38 38 30 42Z" fill="${C.b}" opacity=".88" stroke="${C.l}" stroke-width="1.2"/>`;
-    s += `<g fill="none" stroke="${C.f}" stroke-width="2.2"><circle cx="50" cy="26" r="4"/><circle cx="60" cy="22" r="4"/><circle cx="70" cy="26" r="4"/><circle cx="60" cy="31" r="4"/></g>`;
+    s += `<path d="M30 42 Q30 8 60 8 Q90 8 90 42 Q82 38 75 42 Q68 38 60 42 Q52 38 45 42 Q38 38 30 42Z" fill="${C.b}" opacity=".88"/>`;
+    s += `<path d="M36 30 Q40 14 60 12" ${ln(C, 1.3, .8)}/><path d="M31 41 Q38 37 45 41 Q52 37 60 41 Q68 37 75 41 Q82 37 89 41" ${ln(C, .9, .7)}/>`;
+    s += `<g fill="none" stroke="${C.dk}" stroke-width="2.2" opacity=".8"><circle cx="50" cy="26" r="4"/><circle cx="60" cy="22" r="4"/><circle cx="70" cy="26" r="4"/><circle cx="60" cy="31" r="4"/></g>`;
     return s;
   },
   blob(C, p) {
     const body = 'M20 50 Q18 28 40 24 Q50 14 64 20 Q84 16 94 32 Q106 40 98 54 Q90 66 70 64 Q50 70 34 64 Q20 62 20 50Z';
-    let s = `<path d="M24 46 Q10 40 8 50 Q12 60 24 54Z" fill="${C.f}" ${st(C)}/>`;
-    if (p.lure) s += `<path d="M82 22 Q90 8 100 6" stroke="${C.l}" stroke-width="1.6" fill="none"/><circle cx="101" cy="6" r="3" fill="${C.a}" ${st(C, 1)}/>`;
-    s += `<defs><clipPath id="k"><path d="${body}"/></clipPath></defs><path d="${body}" fill="${C.b}"/><g clip-path="url(#k)">${dots(C, 22, 24, 96, 20, 64, 2.6, 3)}</g><path d="${body}" fill="none" ${st(C)}/>`;
-    s += `<path d="M58 60 Q54 74 66 76 Q72 72 68 60Z" fill="${C.f}" ${st(C)}/><path d="M100 42 Q92 52 80 50" stroke="${C.l}" stroke-width="1.8" fill="none" stroke-linecap="round"/>` + eye(C, 84, 32, 3.6);
+    let s = fin(C, 'M24 46 Q10 40 8 50 Q12 60 24 54Z', [[23, 48, 11, 46], [23, 51, 11, 54]]);
+    if (p.lure) s += `<path d="M82 22 Q90 8 100 6" stroke="${C.dk}" stroke-width="1.6" fill="none"/><circle cx="101" cy="6" r="3" fill="${C.a}"/>`;
+    s += clipped(body, `<path d="M18 52 Q60 58 104 46 L104 72 L18 72Z" fill="${C.lt}" opacity=".7"/>` + blotch(C.dk, 10, 24, 96, 20, 60, 6, 3, .28) + dots(C.lt, 18, 24, 96, 20, 60, 1.8, 3, .8), C.b);
+    s += fin(C, 'M58 60 Q54 74 66 76 Q72 72 68 60Z', [[62, 62, 60, 74], [66, 62, 66, 74]]) + `<path d="M100 42 Q92 52 80 50" stroke="${C.dk}" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M99 45 Q92 52 82 51" ${ln(C, .8, .6)}/>` + eye(C, 84, 32, 3.6);
     return s;
   },
   eel(C, p) {
     if (p.vert) {
       const path = 'M58 80 C58 64 52 52 56 38 S66 22 64 16';
-      let s = `<path d="${path}" stroke="${C.l}" stroke-width="11" fill="none" stroke-linecap="round"/><path d="${path}" stroke="${C.b}" stroke-width="8.5" fill="none" stroke-linecap="round"/>`;
-      s += `<path d="${path}" stroke="${C.a}" stroke-width="8" fill="none" stroke-dasharray="1.2 5" stroke-linecap="round" opacity=".8"/>`;
-      s += `<ellipse cx="66" cy="14" rx="7" ry="5.5" fill="${C.b}" ${st(C, 1.2)}/>` + eye(C, 68, 12, 2.4);
+      let s = `<path d="${path}" stroke="${C.b}" stroke-width="8.5" fill="none" stroke-linecap="round"/><path d="${path}" stroke="${C.a}" stroke-width="8" fill="none" stroke-dasharray="1.2 5" stroke-linecap="round" opacity=".8"/>`;
+      s += `<path d="${path}" ${ln(C, .9, .55)} transform="translate(-2.2 0)"/>`;
+      s += `<ellipse cx="66" cy="14" rx="7" ry="5.5" fill="${C.b}"/>` + eye(C, 68, 12, 2.4);
       return s;
     }
     const path = 'M6 52 C24 30 40 70 62 48 S94 34 104 40';
-    let s = `<path d="${path}" stroke="${C.l}" stroke-width="15" fill="none" stroke-linecap="round"/><path d="${path}" stroke="${C.b}" stroke-width="12" fill="none" stroke-linecap="round"/>`;
-    if (p.pat === 'bands') s += `<path d="${path}" stroke="${C.a}" stroke-width="12" fill="none" stroke-dasharray="5 7"/>`;
-    else s += `<path d="${path}" stroke="${C.a}" stroke-width="10" fill="none" stroke-dasharray="1.5 4.5" stroke-linecap="round" opacity=".75"/>`;
-    s += `<ellipse cx="106" cy="40" rx="11" ry="8" fill="${C.b}" ${st(C)}/>`;
+    let s = `<path d="${path}" stroke="${C.b}" stroke-width="13" fill="none" stroke-linecap="round"/>`;
+    s += `<path d="${path}" stroke="${C.lt}" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55" transform="translate(0 3.5)"/>`;
+    if (p.pat === 'bands') s += `<path d="${path}" stroke="${C.a}" stroke-width="13" fill="none" stroke-dasharray="5 7"/>`;
+    else s += `<path d="${path}" stroke="${C.a}" stroke-width="11" fill="none" stroke-dasharray="1.5 4.5" stroke-linecap="round" opacity=".75"/>`;
+    s += `<path d="${path}" ${ln(C, .9, .6)} transform="translate(0 -4.5)"/>`;
+    s += `<ellipse cx="106" cy="40" rx="11" ry="8" fill="${C.b}"/><path d="M96 43 Q106 48 116 42" fill="${C.lt}" opacity=".6"/>`;
     if (p.lip) s += `<path d="M110 44 Q114 42 117 40" stroke="${p.lip}" stroke-width="3" stroke-linecap="round"/>`;
-    s += `<path d="M104 43 L116 41" stroke="${C.l}" stroke-width="1.3"/>` + eye(C, 108, 36, 2.6);
+    s += `<path d="M104 43 L116 41" stroke="${C.dk}" stroke-width="1.3"/>` + eye(C, 108, 36, 2.6);
     return s;
   },
   mammal(C, p) {
     let s = '';
     if (p.dugong) {
-      s += `<path d="M22 42 Q6 26 0 28 Q6 42 0 56 Q6 58 22 42Z" fill="${C.b}" ${st(C)}/>`;
-      s += `<path d="M18 42 Q30 20 70 22 Q98 22 106 38 Q110 50 100 54 Q94 58 70 58 Q30 60 18 42Z" fill="${C.b}" ${st(C)}/><path d="M24 46 Q60 58 98 52" stroke="${C.a}" stroke-width="5" fill="none" opacity=".6"/>`;
-      s += `<path d="M76 50 Q72 64 62 68 Q78 66 86 52Z" fill="${C.f}" ${st(C)}/>` + eye(C, 94, 34, 2);
-      s += `<path d="M102 44 q6 2 4 8" stroke="${C.l}" stroke-width="1.4" fill="none"/>` + dots({a: C.l}, 6, 98, 106, 44, 50, .6);
+      s += `<path d="M22 42 Q6 26 0 28 Q6 42 0 56 Q6 58 22 42Z" fill="${C.b}"/><path d="M18 42 Q8 34 3 32 M18 42 Q8 50 3 52" ${ln(C, .8, .55)}/>`;
+      s += clipped('M18 42 Q30 20 70 22 Q98 22 106 38 Q110 50 100 54 Q94 58 70 58 Q30 60 18 42Z', `<path d="M18 46 Q60 58 110 48 L110 64 L18 64Z" fill="${C.lt}"/>` + blotch(C.dk, 8, 24, 100, 22, 48, 6, 2, .2) + `<path d="M30 30 Q60 22 96 30 M82 30 q3 6 0 12 M88 32 q3 6 0 12" ${ln(C, .9, .55)}/>`, C.b);
+      s += fin(C, 'M76 50 Q72 64 62 68 Q78 66 86 52Z', [[78, 54, 68, 65]]) + eye(C, 94, 34, 2);
+      s += `<path d="M102 44 q6 2 4 8" stroke="${C.dk}" stroke-width="1.4" fill="none"/>` + dots(C.dk, 6, 98, 106, 44, 50, .6);
       return s;
     }
-    s += `<path d="M16 42 L0 30 Q6 42 0 54Z" fill="${C.b}" ${st(C)}/><path d="M54 28 Q60 12 72 10 Q66 20 72 28Z" fill="${C.b}" ${st(C)}/>`;
-    s += `<path d="M12 42 Q30 26 70 26 Q94 26 102 36 L118 39 L104 44 Q94 54 70 54 Q30 54 12 42Z" fill="${C.b}" ${st(C)}/><path d="M30 46 Q64 54 100 44" stroke="${C.a}" stroke-width="6" fill="none" opacity=".75"/>`;
-    s += `<path d="M78 48 Q72 60 62 64 Q76 62 88 50Z" fill="${C.f}" ${st(C)}/>` + eye(C, 96, 35, 2.2) + `<path d="M104 43 L114 41" stroke="${C.l}" stroke-width="1.1"/>`;
+    s += `<path d="M16 42 L0 30 Q6 42 0 54Z" fill="${C.b}"/><path d="M54 28 Q60 12 72 10 Q66 20 72 28Z" fill="${C.b}"/><path d="M58 27 Q63 16 70 12" ${ln(C, .8, .5)}/>`;
+    s += clipped('M12 42 Q30 26 70 26 Q94 26 102 36 L118 39 L104 44 Q94 54 70 54 Q30 54 12 42Z', `<path d="M24 46 Q64 56 104 43 L110 60 L20 60Z" fill="${C.lt}"/>` + `<path d="M22 38 Q60 26 98 33" ${ln(C, 1, .5)}/>`, C.b);
+    s += fin(C, 'M78 48 Q72 60 62 64 Q76 62 88 50Z', [[80, 51, 68, 62]]) + eye(C, 96, 35, 2.2) + `<path d="M104 43 L114 41" stroke="${C.dk}" stroke-width="1.1"/>`;
     return s;
   },
 };
 const artCache = {};
-function art(sp, sil) {
-  const k = sp.id + (sil ? ':s' : '');
+function art(sp, sil, deco) {
+  const k = sp.id + (sil ? ':s' : '') + (deco ? ':d' : '');
   if (artCache[k]) return artCache[k];
-  const [b, a, f, l] = sp.c;
-  const C = sil ? {b: SIL, a: SIL, f: SIL, l: SIL, e: SIL, p: SIL} : {b, a, f, l, e: '#fff', p: '#111'};
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" width="240" height="160">${T[sp.t](C, sp.p)}</svg>`;
+  const [b, a, f, dk] = sp.c;
+  const C = sil ? {b: SIL, a: SIL, f: SIL, dk: SIL, lt: SIL, ln: SIL, e: SIL, p: SIL}
+    : {b, a, f, dk, lt: mix(b, '#fff8e6', .45), ln: LN, e: '#f6efd6', p: '#141819'};
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" width="240" height="160">${T[sp.t](C, sp.p)}${deco && !sil ? bubbles(C) : ''}</svg>`;
   return (artCache[k] = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg));
 }
 
@@ -910,7 +959,7 @@ function render() {
   const list = SPECIES.filter(s => dexFilter === 'all' || (dexFilter === 'seen') === !!S[s.id]);
   $('#dexGrid').innerHTML = list.map(sp => {
     const seen = !!S[sp.id];
-    return `<button type="button" class="card r${sp.r} ${seen ? '' : 'unseen'}" data-sp="${sp.id}" aria-label="${seen ? esc(sp.th) : 'ยังไม่พบ'} ${pad3(sp.no)}"><span class="dot"></span><span class="no">${pad3(sp.no)}</span><img src="${art(sp, !seen)}" alt=""><span class="nm">${seen ? esc(sp.th) : '???'}</span></button>`;
+    return `<button type="button" class="card r${sp.r} ${seen ? '' : 'unseen'}" data-sp="${sp.id}" aria-label="${seen ? esc(sp.th) : 'ยังไม่พบ'} ${pad3(sp.no)}">${sp.iucn ? `<span class="iucn ${sp.iucn}" title="IUCN ${IUCN[sp.iucn]}">${sp.iucn}</span>` : ''}<span class="no">${pad3(sp.no)}<i class="dot"></i></span><img src="${art(sp, !seen, true)}" alt=""><span class="nm">${seen ? esc(sp.th) : '???'}</span></button>`;
   }).join('') || '<p class="sub">ยังไม่มีในหมวดนี้</p>';
   document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.f === dexFilter)));
 
@@ -958,9 +1007,9 @@ function openSpecies(id) {
   const prevT = LV[lv - 1] || 0;
   sheet(`
     <div class="phead"><span class="num" style="color:var(--dim)">${pad3(sp.no)}</span><button class="x" data-close aria-label="ปิด">${X_ICON}</button></div>
-    <div class="hero" id="hero"><img src="${art(sp, !seen)}" alt="${seen ? esc(sp.th) : 'ยังไม่พบ'}"></div>
+    <div class="hero" id="hero"><img src="${art(sp, !seen, true)}" alt="${seen ? esc(sp.th) : 'ยังไม่พบ'}"></div>
     <div style="display:grid;gap:6px">
-      <div style="display:flex;gap:6px;flex-wrap:wrap" class="r${sp.r}"><span class="pill">${RARITY[sp.r]}</span>${seen ? `<span class="pill" style="--rc:var(--r3)">Lv ${lv}</span>` : ''}</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap" class="r${sp.r}"><span class="pill">${RARITY[sp.r]}</span>${seen ? `<span class="pill" style="--rc:var(--r3)">Lv ${lv}</span>` : ''}${sp.iucn ? `<span class="pill" style="--rc:#f0a070"><i class="iucn ${sp.iucn}" style="width:18px;height:18px;font-size:8px;margin-left:-6px">${sp.iucn}</i>${IUCN[sp.iucn]}</span>` : ''}</div>
       <h2 style="font-size:24px">${seen ? esc(sp.th) : '???'}</h2>
       <p class="sub">${seen ? esc(sp.en) : 'ยังไม่เคยพบ ไปตามหาตัวจริงใต้น้ำ'}</p>
     </div>
@@ -983,7 +1032,7 @@ function openSpecies(id) {
     const url = await Photos.get(e.photos[e.photos.length - 1]); if (!url) return;
     const hero = $('#hero'); if (!hero) return;
     let photo = true;
-    const paint = () => { hero.innerHTML = (photo ? `<img class="photo" src="${url}" alt="ภาพถ่ายของฉัน: ${esc(sp.th)}">` : `<img src="${art(sp)}" alt="${esc(sp.th)}">`) + `<button type="button" class="tog">${photo ? 'ดูภาพวาด' : 'ดูภาพของฉัน'}</button>`; hero.querySelector('.tog').onclick = () => { photo = !photo; paint(); }; };
+    const paint = () => { hero.innerHTML = (photo ? `<img class="photo" src="${url}" alt="ภาพถ่ายของฉัน: ${esc(sp.th)}">` : `<img src="${art(sp, false, true)}" alt="${esc(sp.th)}">`) + `<button type="button" class="tog">${photo ? 'ดูภาพวาด' : 'ดูภาพของฉัน'}</button>`; hero.querySelector('.tog').onclick = () => { photo = !photo; paint(); }; };
     paint();
   });
 }
@@ -1091,7 +1140,7 @@ function reveal(d, fresh, ups, decor, S) {
       const sp = fresh[i];
       box.innerHTML = `<div class="rcard r${sp.r}">
         <span class="kicker">พบสัตว์ใหม่ ${fresh.length > 1 ? `${i + 1}/${fresh.length}` : ''}</span>
-        <div class="big"><div class="burst"></div><img class="s" src="${art(sp, true)}" alt=""><img class="c" src="${art(sp)}" alt="${esc(sp.th)}"></div>
+        <div class="big"><div class="burst"></div><img class="s" src="${art(sp, true)}" alt=""><img class="c" src="${art(sp, false, true)}" alt="${esc(sp.th)}"></div>
         <span class="num" style="color:var(--dim)">${pad3(sp.no)}</span>
         <h2>${esc(sp.th)}</h2>
         <span class="pill">${RARITY[sp.r]}</span>
