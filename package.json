@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build:divedex": "node divedex/build.mjs"
   },
   "dependencies": {
     "next": "^16.3.6",
